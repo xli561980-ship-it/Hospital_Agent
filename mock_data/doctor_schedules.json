@@ -1,0 +1,1357 @@
+[
+  {
+    "department": "风湿免疫科",
+    "sub_specialty": "系统性红斑狼疮专科",
+    "doctor_name": "赵明德",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Monday_PM": {"status": "Off", "fee": 0},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 100},
+      "Friday_Night": {"status": "有号", "fee": 300}
+    }
+  },
+  {
+    "department": "风湿免疫科",
+    "sub_specialty": "类风湿关节炎专科",
+    "doctor_name": "李晓云",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "有号", "fee": 80},
+      "Tuesday_PM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "停诊", "fee": 80},
+      "Sunday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "风湿免疫科",
+    "sub_specialty": "痛风与高尿酸血症门诊",
+    "doctor_name": "陈强",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Saturday_AM": {"status": "已约满", "fee": 50}
+    }
+  },
+  {
+    "department": "心血管内科",
+    "sub_specialty": "冠心病介入专科",
+    "doctor_name": "刘建国",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "心血管内科",
+    "sub_specialty": "心律失常与起搏器专科",
+    "doctor_name": "王海燕",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "停诊", "fee": 80},
+      "Wednesday_AM": {"status": "已约满", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "心血管内科",
+    "sub_specialty": "高血压与心衰中心",
+    "doctor_name": "张伟",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Tuesday_Night": {"status": "即将约满(余<5)", "fee": 100},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "神经内科",
+    "sub_specialty": "脑血管病与卒中专科",
+    "doctor_name": "张文华",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 100},
+      "Friday_PM": {"status": "有号", "fee": 100}
+    }
+  },
+  {
+    "department": "神经内科",
+    "sub_specialty": "帕金森与运动障碍门诊",
+    "doctor_name": "孙俪",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "神经内科",
+    "sub_specialty": "癫痫与睡眠障碍中心",
+    "doctor_name": "周健",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_Night": {"status": "有号", "fee": 100},
+      "Sunday_AM": {"status": "停诊", "fee": 50}
+    }
+  },
+  {
+    "department": "消化内科",
+    "sub_specialty": "炎症性肠病(IBD)专科",
+    "doctor_name": "吴秀英",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "消化内科",
+    "sub_specialty": "肝硬化与门脉高压专科",
+    "doctor_name": "陈志刚",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "有号", "fee": 80},
+      "Friday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Sunday_PM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "消化内科",
+    "sub_specialty": "胃肠动力与微生态门诊",
+    "doctor_name": "林芳",
+    "title": "主治医师",
+    "schedule": {
+      "Wednesday_AM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "停诊", "fee": 50},
+      "Saturday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "呼吸与危重症医学科",
+    "sub_specialty": "肺部结节与早期肺癌筛查",
+    "doctor_name": "郑国强",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "呼吸与危重症医学科",
+    "sub_specialty": "哮喘与慢阻肺(COPD)专科",
+    "doctor_name": "黄美丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Wednesday_AM": {"status": "有号", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "呼吸与危重症医学科",
+    "sub_specialty": "间质性肺病门诊",
+    "doctor_name": "徐鹏",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "即将约满(余<5)", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "内分泌科",
+    "sub_specialty": "糖尿病与代谢综合征",
+    "doctor_name": "冯建华",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "内分泌科",
+    "sub_specialty": "甲状腺结节与甲亢专科",
+    "doctor_name": "杨丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "内分泌科",
+    "sub_specialty": "骨质疏松与垂体疾病门诊",
+    "doctor_name": "赵斌",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "肾脏内科",
+    "sub_specialty": "IgA肾病与慢性肾炎专科",
+    "doctor_name": "朱明",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 100},
+      "Friday_PM": {"status": "已约满", "fee": 100}
+    }
+  },
+  {
+    "department": "肾脏内科",
+    "sub_specialty": "尿毒症与腹膜透析门诊",
+    "doctor_name": "何静",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "有号", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 80}
+    }
+  },
+  {
+    "department": "肾脏内科",
+    "sub_specialty": "糖尿病肾病专病门诊",
+    "doctor_name": "郭涛",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "血液内科",
+    "sub_specialty": "白血病与骨髓增生异常专科",
+    "doctor_name": "马志强",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "血液内科",
+    "sub_specialty": "淋巴瘤与多发性骨髓瘤门诊",
+    "doctor_name": "董洁",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "血液内科",
+    "sub_specialty": "贫血与出凝血障碍专科",
+    "doctor_name": "韩飞",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "即将约满(余<5)", "fee": 50}
+    }
+  },
+  {
+    "department": "感染内科",
+    "sub_specialty": "病毒性肝炎专科",
+    "doctor_name": "沈红",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "感染内科",
+    "sub_specialty": "不明原因发热与疑难感染",
+    "doctor_name": "梁斌",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "感染内科",
+    "sub_specialty": "艾滋病与性传播疾病门诊",
+    "doctor_name": "宋燕",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "肿瘤内科",
+    "sub_specialty": "消化道肿瘤内科治疗",
+    "doctor_name": "高明",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "肿瘤内科",
+    "sub_specialty": "肺癌靶向与免疫治疗专科",
+    "doctor_name": "许晴",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "肿瘤内科",
+    "sub_specialty": "乳腺癌内科综合门诊",
+    "doctor_name": "潘强",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "停诊", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "变态反应科",
+    "sub_specialty": "严重过敏反应与脱敏治疗",
+    "doctor_name": "叶英",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "变态反应科",
+    "sub_specialty": "过敏性鼻炎与特应性皮炎",
+    "doctor_name": "丁伟",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "有号", "fee": 80},
+      "Thursday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "变态反应科",
+    "sub_specialty": "食物与药物过敏专病门诊",
+    "doctor_name": "吕敏",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "胃肠外科",
+    "sub_specialty": "胃癌微创外科",
+    "doctor_name": "曹勇",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "胃肠外科",
+    "sub_specialty": "结直肠癌与盆底外科",
+    "doctor_name": "魏娟",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Wednesday_AM": {"status": "有号", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "胃肠外科",
+    "sub_specialty": "减重与代谢外科",
+    "doctor_name": "任刚",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "肝胆外科",
+    "sub_specialty": "原发性肝癌外科与移植",
+    "doctor_name": "彭建",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "肝胆外科",
+    "sub_specialty": "复杂胆道疾病与胆管癌",
+    "doctor_name": "卢红",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "有号", "fee": 80},
+      "Thursday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "肝胆外科",
+    "sub_specialty": "胆囊结石微创门诊",
+    "doctor_name": "崔军",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "甲状腺外科",
+    "sub_specialty": "甲状腺癌根治与颈清扫",
+    "doctor_name": "苏强",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "甲状腺外科",
+    "sub_specialty": "甲状旁腺疾病外科",
+    "doctor_name": "薛梅",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "甲状腺外科",
+    "sub_specialty": "甲状腺结节消融门诊",
+    "doctor_name": "田野",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_AM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "乳腺外科",
+    "sub_specialty": "乳腺癌保乳与重建中心",
+    "doctor_name": "程丽",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "乳腺外科",
+    "sub_specialty": "乳腺良性肿瘤微创旋切",
+    "doctor_name": "胡飞",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "乳腺外科",
+    "sub_specialty": "乳腺炎与哺乳期导管疾病",
+    "doctor_name": "贾艳",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "血管外科",
+    "sub_specialty": "主动脉大血管与介入治疗",
+    "doctor_name": "段明",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "血管外科",
+    "sub_specialty": "外周动静脉闭塞与静脉曲张",
+    "doctor_name": "范晓",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "血管外科",
+    "sub_specialty": "深静脉血栓与血管瘤门诊",
+    "doctor_name": "雷鹏",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "停诊", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "神经外科",
+    "sub_specialty": "颅脑肿瘤与颅底显微外科",
+    "doctor_name": "姜伟",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "神经外科",
+    "sub_specialty": "脑血管病与介入神经外科",
+    "doctor_name": "顾红",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "神经外科",
+    "sub_specialty": "功能神经外科(三叉神经/帕金森)",
+    "doctor_name": "白宇",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "有号", "fee": 50},
+      "Wednesday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "胸外科",
+    "sub_specialty": "胸腔镜微创肺癌根治术",
+    "doctor_name": "孔祥",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "胸外科",
+    "sub_specialty": "食管癌与纵隔肿瘤",
+    "doctor_name": "孟丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "胸外科",
+    "sub_specialty": "漏斗胸与手汗症专科",
+    "doctor_name": "尹浩",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "心脏外科",
+    "sub_specialty": "瓣膜病与冠脉搭桥术",
+    "doctor_name": "侯勇",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "心脏外科",
+    "sub_specialty": "先天性心脏病外科",
+    "doctor_name": "方琴",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "心脏外科",
+    "sub_specialty": "大血管疾病微创外科",
+    "doctor_name": "常毅",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "泌尿外科",
+    "sub_specialty": "前列腺癌与膀胱癌专科",
+    "doctor_name": "钱刚",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "泌尿外科",
+    "sub_specialty": "泌尿系结石微创治疗",
+    "doctor_name": "贺红",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "泌尿外科",
+    "sub_specialty": "男科与性功能障碍门诊",
+    "doctor_name": "马杰",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "骨科-脊柱外科",
+    "sub_specialty": "颈椎病与腰椎间盘突出",
+    "doctor_name": "石磊",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "骨科-脊柱外科",
+    "sub_specialty": "脊柱畸形与侧弯矫形",
+    "doctor_name": "袁静",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "骨科-脊柱外科",
+    "sub_specialty": "脊柱微创内镜门诊",
+    "doctor_name": "丁波",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "骨科-关节外科",
+    "sub_specialty": "膝髋关节置换与翻修",
+    "doctor_name": "邹强",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "骨科-关节外科",
+    "sub_specialty": "骨关节炎与股骨头坏死",
+    "doctor_name": "任芳",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "骨科-关节外科",
+    "sub_specialty": "关节僵硬与保关节治疗",
+    "doctor_name": "齐伟",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "骨科-创伤骨科",
+    "sub_specialty": "复杂骨折与骨不连",
+    "doctor_name": "彭刚",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "骨科-创伤骨科",
+    "sub_specialty": "老年髋部骨折与骨质疏松",
+    "doctor_name": "邓丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "已约满", "fee": 80}
+    }
+  },
+  {
+    "department": "骨科-创伤骨科",
+    "sub_specialty": "足踝外科门诊",
+    "doctor_name": "侯健",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "骨科-运动医学科",
+    "sub_specialty": "韧带重建与半月板修复",
+    "doctor_name": "夏雷",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "骨科-运动医学科",
+    "sub_specialty": "肩袖损伤与肩关节镜",
+    "doctor_name": "沈雪",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "骨科-运动医学科",
+    "sub_specialty": "运动康复指导门诊",
+    "doctor_name": "谭勇",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "妇科",
+    "sub_specialty": "妇科肿瘤与微创外科",
+    "doctor_name": "潘红",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "妇科",
+    "sub_specialty": "子宫内膜异位症与腺肌症",
+    "doctor_name": "宋芳",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "妇科",
+    "sub_specialty": "妇科内分泌与更年期门诊",
+    "doctor_name": "刘静",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "产科",
+    "sub_specialty": "高危妊娠与妊娠期糖尿病",
+    "doctor_name": "魏梅",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "产科",
+    "sub_specialty": "胎儿医学与产前诊断",
+    "doctor_name": "蒋丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "产科",
+    "sub_specialty": "优生优育与早孕保胎",
+    "doctor_name": "许敏",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "生殖医学科",
+    "sub_specialty": "试管婴儿与辅助生殖",
+    "doctor_name": "孙明",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "生殖医学科",
+    "sub_specialty": "反复流产与免疫性不孕",
+    "doctor_name": "郭红",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "生殖医学科",
+    "sub_specialty": "男性不育与精液异常门诊",
+    "doctor_name": "李强",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "儿科",
+    "sub_specialty": "儿童哮喘与呼吸道感染",
+    "doctor_name": "吴刚",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "儿科",
+    "sub_specialty": "儿童癫痫与神经发育",
+    "doctor_name": "赵燕",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "儿科",
+    "sub_specialty": "儿童内分泌与性早熟",
+    "doctor_name": "张雪",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "小儿外科",
+    "sub_specialty": "小儿普外与先天性畸形",
+    "doctor_name": "雷强",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "小儿外科",
+    "sub_specialty": "小儿泌尿外科门诊",
+    "doctor_name": "韩冬",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "小儿外科",
+    "sub_specialty": "小儿骨科与步态异常",
+    "doctor_name": "杨波",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "眼科",
+    "sub_specialty": "玻璃体视网膜与眼底病",
+    "doctor_name": "陆明",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "眼科",
+    "sub_specialty": "白内障与屈光晶体专科",
+    "doctor_name": "陈雪",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "眼科",
+    "sub_specialty": "青光眼与视神经疾病",
+    "doctor_name": "王强",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "耳鼻咽喉科",
+    "sub_specialty": "耳显微外科与人工耳蜗",
+    "doctor_name": "方正",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "耳鼻咽喉科",
+    "sub_specialty": "鼻内镜外科与鼻窦炎",
+    "doctor_name": "林红",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "耳鼻咽喉科",
+    "sub_specialty": "咽喉头颈肿瘤与鼾症",
+    "doctor_name": "孙雷",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "口腔科",
+    "sub_specialty": "口腔颌面外科与种植牙",
+    "doctor_name": "马强",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "口腔科",
+    "sub_specialty": "牙体牙髓病与根管治疗",
+    "doctor_name": "杜鹃",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "口腔科",
+    "sub_specialty": "口腔正畸与牙齿隐形矫正",
+    "doctor_name": "白雪",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "皮肤科",
+    "sub_specialty": "银屑病与免疫性皮肤病",
+    "doctor_name": "丁刚",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "皮肤科",
+    "sub_specialty": "医学美容与激光治疗",
+    "doctor_name": "高丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "皮肤科",
+    "sub_specialty": "脱发与痤疮专病门诊",
+    "doctor_name": "刘洋",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "心理医学科",
+    "sub_specialty": "抑郁症与双相情感障碍",
+    "doctor_name": "赵勇",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "心理医学科",
+    "sub_specialty": "焦虑失眠与心理干预",
+    "doctor_name": "王梅",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "心理医学科",
+    "sub_specialty": "青少年心理与儿童自闭症",
+    "doctor_name": "李雷",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "康复医学科",
+    "sub_specialty": "偏瘫与神经系统康复",
+    "doctor_name": "钱明",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "康复医学科",
+    "sub_specialty": "骨关节与运动创伤康复",
+    "doctor_name": "孙丽",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "康复医学科",
+    "sub_specialty": "盆底与心肺康复中心",
+    "doctor_name": "周涛",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "中医科",
+    "sub_specialty": "中医肿瘤与体质调理",
+    "doctor_name": "吴国强",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_AM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "中医科",
+    "sub_specialty": "中医脾胃病与治未病",
+    "doctor_name": "郑梅",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "中医科",
+    "sub_specialty": "中医妇科与不孕不育",
+    "doctor_name": "陈浩",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "停诊", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "疼痛科",
+    "sub_specialty": "癌痛微创介入治疗中心",
+    "doctor_name": "蒋明",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "疼痛科",
+    "sub_specialty": "带状疱疹与神经痛专科",
+    "doctor_name": "韩雪",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "疼痛科",
+    "sub_specialty": "颈腰腿痛射频消融门诊",
+    "doctor_name": "魏强",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "临床营养科",
+    "sub_specialty": "医学减重与肠外肠内营养",
+    "doctor_name": "曹丽",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 100},
+      "Thursday_PM": {"status": "已约满", "fee": 100},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "临床营养科",
+    "sub_specialty": "糖尿病与肿瘤营养支持",
+    "doctor_name": "任明",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 80},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Friday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "临床营养科",
+    "sub_specialty": "孕产妇营养与代谢管理",
+    "doctor_name": "袁芳",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 50},
+      "Thursday_PM": {"status": "有号", "fee": 50},
+      "Sunday_PM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "老年医学科",
+    "sub_specialty": "老年综合征与多器官衰竭",
+    "doctor_name": "潘建国",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "老年医学科",
+    "sub_specialty": "老年痴呆与认知障碍评估",
+    "doctor_name": "段雪",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "停诊", "fee": 80}
+    }
+  },
+  {
+    "department": "老年医学科",
+    "sub_specialty": "老年骨质疏松与防跌倒门诊",
+    "doctor_name": "孔强",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  },
+  {
+    "department": "特需医疗部",
+    "sub_specialty": "国际内科多学科综合门诊",
+    "doctor_name": "张建华",
+    "title": "主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "已约满", "fee": 500},
+      "Thursday_AM": {"status": "已约满", "fee": 500},
+      "Saturday_AM": {"status": "即将约满(余<5)", "fee": 500}
+    }
+  },
+  {
+    "department": "特需医疗部",
+    "sub_specialty": "国际外科疑难病理会诊",
+    "doctor_name": "李晓",
+    "title": "副主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "有号", "fee": 300},
+      "Wednesday_AM": {"status": "即将约满(余<5)", "fee": 300},
+      "Friday_AM": {"status": "停诊", "fee": 300}
+    }
+  },
+  {
+    "department": "特需医疗部",
+    "sub_specialty": "涉外高端体检与健康管理",
+    "doctor_name": "王宇",
+    "title": "主治医师",
+    "schedule": {
+      "Tuesday_PM": {"status": "有号", "fee": 200},
+      "Thursday_PM": {"status": "有号", "fee": 200},
+      "Sunday_PM": {"status": "有号", "fee": 200}
+    }
+  },
+  {
+    "department": "罕见病中心",
+    "sub_specialty": "遗传性神经肌肉病专科",
+    "doctor_name": "陈明",
+    "title": "主任医师",
+    "schedule": {
+      "Monday_AM": {"status": "已约满", "fee": 100},
+      "Wednesday_AM": {"status": "已约满", "fee": 100},
+      "Friday_PM": {"status": "即将约满(余<5)", "fee": 100}
+    }
+  },
+  {
+    "department": "罕见病中心",
+    "sub_specialty": "成骨不全与罕见骨病",
+    "doctor_name": "刘芳",
+    "title": "副主任医师",
+    "schedule": {
+      "Tuesday_AM": {"status": "即将约满(余<5)", "fee": 80},
+      "Thursday_AM": {"status": "有号", "fee": 80},
+      "Saturday_AM": {"status": "有号", "fee": 80}
+    }
+  },
+  {
+    "department": "罕见病中心",
+    "sub_specialty": "法布雷病与溶酶体贮积症",
+    "doctor_name": "张波",
+    "title": "主治医师",
+    "schedule": {
+      "Monday_PM": {"status": "停诊", "fee": 50},
+      "Wednesday_PM": {"status": "有号", "fee": 50},
+      "Sunday_AM": {"status": "有号", "fee": 50}
+    }
+  }
+]

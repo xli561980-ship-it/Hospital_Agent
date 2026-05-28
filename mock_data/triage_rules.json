@@ -1,0 +1,1012 @@
+[
+  {
+    "symptoms": ["剧烈胸痛", "放射至左臂", "大汗", "濒死感"],
+    "age_min": 18,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-胸痛中心",
+    "triage_advice": "高度怀疑急性心肌梗死，立即启动胸痛绿色通道，行首份心电图检查并建立静脉通路。"
+  },
+  {
+    "symptoms": ["突发单侧肢体无力", "言语含糊", "口角歪斜"],
+    "age_min": 18,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-卒中中心",
+    "triage_advice": "高度怀疑急性缺血性脑卒中，立即启动卒中绿通，呼叫神经内科急会诊，优先安排头颅CT/CTA。"
+  },
+  {
+    "symptoms": ["多饮", "多尿", "体重不明原因下降", "疲乏"],
+    "age_min": 14,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "内分泌科-糖尿病专科门诊",
+    "triage_advice": "建议首诊查空腹血糖、糖化血红蛋白及尿常规，警惕糖尿病酮症倾向。"
+  },
+  {
+    "symptoms": ["持续性剧烈头痛", "喷射性呕吐", "颈部僵硬"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-神经急重症",
+    "triage_advice": "警惕蛛网膜下腔出血或颅内感染，要求绝对卧床，立即推车送入急诊抢救室。"
+  },
+  {
+    "symptoms": ["普通头痛", "头痛", "头疼", "头部胀痛", "偏头痛"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "神经内科",
+    "triage_advice": "建议到神经内科门诊，由线下医生进一步评估。"
+  },
+  {
+    "symptoms": ["停经", "突发下腹剧痛", "阴道少量流血", "面色苍白"],
+    "age_min": 12,
+    "age_max": 55,
+    "gender": "female",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "妇产科急诊",
+    "triage_advice": "高度警惕异位妊娠破裂出血引起休克，立即测血压心率，开放静脉通路，紧急呼叫妇产科值班医生。"
+  },
+  {
+    "symptoms": ["儿童持续高热(>39度)", "皮疹", "结膜充血", "草莓舌"],
+    "age_min": 0,
+    "age_max": 14,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "儿科急诊-发热门诊",
+    "triage_advice": "高度怀疑川崎病或严重感染性发热，安排儿科急诊隔离诊室优先就诊，警惕冠状动脉病变。"
+  },
+  {
+    "symptoms": ["无痛性肉眼血尿", "全程血尿", "伴血块"],
+    "age_min": 40,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "泌尿外科-泌尿系肿瘤专病门诊",
+    "triage_advice": "中老年无痛性肉眼血尿高度警惕尿路上皮肿瘤，建议行泌尿系彩超及尿液脱落细胞学检查。"
+  },
+  {
+    "symptoms": ["突发呼吸困难", "粉红色泡沫痰", "端坐呼吸", "大汗淋漓"],
+    "age_min": 18,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-心血管急重症",
+    "triage_advice": "急性左心衰典型表现，立即给予高流量面罩吸氧，心电监护，急呼心内科会诊。"
+  },
+  {
+    "symptoms": ["接触过敏原后突发气促", "口唇水肿", "全身风团样皮疹"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊抢救室(红区)",
+    "triage_advice": "严重过敏性休克先兆，随时可能气道窒息！无需挂号，立即送入抢救区准备肾上腺素及气管插管。"
+  },
+  {
+    "symptoms": ["黑便", "呕吐咖啡色液体", "头晕", "心率加快"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-消化急症",
+    "triage_advice": "急性消化道大出血，评估循环状态，绝对卧床禁食水，急查血常规及血型，备血。"
+  },
+  {
+    "symptoms": ["转移性右下腹痛", "发热", "恶心呕吐"],
+    "age_min": 5,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "普外科急诊",
+    "triage_advice": "急性阑尾炎典型症状，建议禁食水，急诊查血常规及腹部彩超，外科急诊首诊。"
+  },
+  {
+    "symptoms": ["孕28周以上", "双下肢水肿加重", "视物模糊", "血压>160/110mmHg"],
+    "age_min": 18,
+    "age_max": 50,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "is_emergency": true,
+    "recommended_department": "产科急诊",
+    "triage_advice": "重度子痫前期，极高危！需立即安排轮椅或平车送入产房急救区，防子痫抽搐。"
+  },
+  {
+    "symptoms": ["清晨关节僵硬>1小时", "双侧对称性小关节肿痛", "遇冷加重"],
+    "age_min": 18,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "风湿免疫科-类风湿关节炎专病门诊",
+    "triage_advice": "警惕类风湿关节炎，建议完善自身抗体谱及关节超声检查。"
+  },
+  {
+    "symptoms": ["反复发作性心悸", "突发突止", "脉搏极速(>150次/分)"],
+    "age_min": 10,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "心血管内科-心律失常专科急诊",
+    "triage_advice": "阵发性室上性心动过速可能，发作期建议立即行心电图记录，若伴血压下降入抢救室。"
+  },
+  {
+    "symptoms": ["渐进性记忆力减退", "近期遗忘严重", "空间定向障碍", "性格改变"],
+    "age_min": 50,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经内科-记忆与认知障碍专病门诊",
+    "triage_advice": "怀疑阿尔茨海默病等痴呆症，建议家属陪同，进行详细认知功能量表筛查。"
+  },
+  {
+    "symptoms": ["不明原因反复发热", "多发性口腔溃疡", "面部蝶形红斑", "脱发"],
+    "age_min": 12,
+    "age_max": 60,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "风湿免疫科-系统性红斑狼疮专病门诊",
+    "triage_advice": "高度怀疑系统性红斑狼疮，需查ANA谱、补体及尿常规，避免阳光直射。"
+  },
+  {
+    "symptoms": ["突发剧烈腰痛", "向下腹及会阴部放射", "伴恶心呕吐", "肉眼血尿"],
+    "age_min": 14,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "泌尿外科急诊",
+    "triage_advice": "泌尿系结石伴肾绞痛，痛感剧烈，建议急诊查泌尿系彩超及尿常规，予以解痉镇痛治疗。"
+  },
+  {
+    "symptoms": ["进行性吞咽困难", "先干后稀", "消瘦", "胸骨后烧灼感"],
+    "age_min": 40,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "消化内科-消化道早癌筛查门诊",
+    "triage_advice": "警惕食管占位性病变，建议预约无痛胃镜检查并完善肿瘤标志物检测。"
+  },
+  {
+    "symptoms": ["新生儿出生后48小时未排胎便", "进行性腹胀", "频繁呕吐"],
+    "age_min": 0,
+    "age_max": 1,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "小儿外科急诊",
+    "triage_advice": "高度警惕先天性巨结肠或肠闭锁，立即禁食，紧急行腹部立位平片及下消化道造影。"
+  },
+  {
+    "symptoms": ["单侧突发视力急剧下降", "眼胀痛明显", "同侧头痛", "伴恶心呕吐"],
+    "age_min": 40,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "眼科急诊",
+    "triage_advice": "急性闭角型青光眼大发作可能，属致盲性眼病急症！需立即测眼压并予降眼压处理。"
+  },
+  {
+    "symptoms": ["月经周期紊乱", "多毛", "重度痤疮", "肥胖"],
+    "age_min": 14,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "妇科内分泌门诊",
+    "triage_advice": "多囊卵巢综合征(PCOS)表现，建议于月经第2-4天抽血查性激素六项及甲功。"
+  },
+  {
+    "symptoms": ["长期慢性咳嗽", "咳大量脓臭痰", "间断咯血"],
+    "age_min": 10,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "呼吸与危重症医学科-支气管扩张专病门诊",
+    "triage_advice": "支气管扩张症可能，大咯血时需急诊就诊；常规复诊建议带既往胸部高分辨CT。"
+  },
+  {
+    "symptoms": ["突然眩晕", "视物旋转", "伴耳鸣及听力下降", "恶心呕吐"],
+    "age_min": 18,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科-眩晕/耳石症专科",
+    "triage_advice": "梅尼埃病或前庭系统病变可能，建议查纯音测听及前庭功能，发作期防跌倒。"
+  },
+  {
+    "symptoms": ["怕热多汗", "心悸手抖", "体重下降", "情绪易激动"],
+    "age_min": 15,
+    "age_max": 70,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "内分泌科-甲状腺专病门诊",
+    "triage_advice": "甲状腺功能亢进症典型表现，建议查甲功全项及甲状腺超声，孕妇需专科指导用药。"
+  },
+  {
+    "symptoms": ["躯干及四肢成簇水疱", "沿神经走向分布", "剧烈神经痛", "单侧皮损"],
+    "age_min": 18,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "皮肤科-带状疱疹与神经痛专科",
+    "triage_advice": "带状疱疹，建议尽早抗病毒及营养神经治疗，高龄患者警惕后遗神经痛。"
+  },
+  {
+    "symptoms": ["儿童阵发性腹痛", "果酱样大便", "呕吐", "腹部触及包块"],
+    "age_min": 0,
+    "age_max": 5,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "小儿外科急诊",
+    "triage_advice": "急性肠套叠典型症状，儿科急危重症，需立即行腹部超声确诊并尽早空气灌肠复位。"
+  },
+  {
+    "symptoms": ["颈部无痛性肿块", "进行性增大", "伴声音嘶哑", "吞咽不适"],
+    "age_min": 20,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "基本外科-甲状腺外科专病门诊",
+    "triage_advice": "高度警惕甲状腺恶性肿瘤侵犯喉返神经，需行高频超声及细针穿刺活检(FNAB)。"
+  },
+  {
+    "symptoms": ["严重打鼾", "夜间呼吸暂停憋醒", "白天嗜睡", "晨起头痛"],
+    "age_min": 18,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科-睡眠呼吸暂停专科",
+    "triage_advice": "阻塞性睡眠呼吸暂停低通气综合征(OSAHS)，建议预约整夜多导睡眠监测(PSG)。"
+  },
+  {
+    "symptoms": ["孕早期间断阴道流血", "无腹痛或轻微下腹坠胀", "早孕反应消失"],
+    "age_min": 18,
+    "age_max": 50,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "is_emergency": false,
+    "recommended_department": "产科-早期保胎与优生门诊",
+    "triage_advice": "先兆流产或胚胎停育可能，需查血HCG、孕酮并结合妇科经阴道超声评估胚胎发育。"
+  },
+  {
+    "symptoms": ["突发剧烈撕裂样胸背痛", "双上肢血压不对称", "脉搏不对称", "伴大汗休克"],
+    "age_min": 30,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "急诊科-大血管病变中心",
+    "triage_advice": "主动脉夹层极高危！致死率极高，绝对卧床，控制血压心率，紧急行全主动脉CTA。"
+  },
+  {
+    "symptoms": ["乏力", "食欲减退", "厌油腻", "皮肤及巩膜黄染", "尿色加深"],
+    "age_min": 15,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "感染内科/肝炎门诊",
+    "triage_advice": "急性肝炎或肝损害可能，具有传染性风险，建议戴口罩，急查肝功及肝炎病毒标志物。"
+  },
+  {
+    "symptoms": ["持续性上腹痛", "向腰背部放射", "饱餐或饮酒后发作", "恶心呕吐后不缓解"],
+    "age_min": 18,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "消化内科急诊",
+    "triage_advice": "急性胰腺炎表现，禁食水，急查血尿淀粉酶、脂肪酶及腹部CT，警惕重症胰腺炎。"
+  },
+  {
+    "symptoms": ["四肢远端对称性麻木", "呈手套袜套样感觉减退", "糖尿病史多年"],
+    "age_min": 30,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "内分泌科-糖尿病并发症门诊",
+    "triage_advice": "糖尿病周围神经病变，需严格控制血糖，并建议完善肌电图检查。"
+  },
+  {
+    "symptoms": ["外伤后局部肿胀剧痛", "关节畸形", "骨擦音或反常活动"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "骨科急诊",
+    "triage_advice": "明确的骨折体征，立即予以制动固定，禁止盲目复位，安排X线检查评估骨折移位情况。"
+  },
+  {
+    "symptoms": ["肛门坠胀感", "排便习惯改变", "大便变细", "便中带暗红色血及黏液"],
+    "age_min": 35,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "胃肠外科-结直肠肿瘤门诊",
+    "triage_advice": "直肠癌高危症状，不应误认为痔疮，强烈建议行直肠指诊及结肠镜检查。"
+  },
+  {
+    "symptoms": ["女性突发一侧下腹剧痛", "伴恶心呕吐", "既往有卵巢囊肿病史"],
+    "age_min": 12,
+    "age_max": 55,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "妇科急诊",
+    "triage_advice": "高度怀疑卵巢囊肿蒂扭转，需急诊行盆腔彩超，必要时需急诊腹腔镜手术保住卵巢。"
+  },
+  {
+    "symptoms": ["发作性喘息", "呼吸困难伴哮鸣音", "夜间或凌晨加重", "过敏史"],
+    "age_min": 3,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "呼吸与危重症医学科急诊",
+    "triage_advice": "支气管哮喘急性发作，需立即评估气道通畅度，给予雾化吸入支气管扩张剂治疗。"
+  },
+  {
+    "symptoms": ["婴儿阵发性哭闹", "拒奶", "抓耳挠腮", "前囟平软伴低热"],
+    "age_min": 0,
+    "age_max": 3,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科-小儿耳科门诊",
+    "triage_advice": "婴幼儿无法主诉，需高度警惕急性中耳炎，建议行耳镜检查避免鼓膜穿孔。"
+  },
+  {
+    "symptoms": ["间歇性跛行", "下肢发凉", "足背动脉搏动减弱或消失", "吸烟史"],
+    "age_min": 40,
+    "age_max": 100,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "血管外科-外周动脉疾病专科",
+    "triage_advice": "下肢动脉硬化闭塞症可能，建议行下肢动脉血管彩超及踝肱指数(ABI)测定。"
+  },
+  {
+    "symptoms": ["男性排尿困难", "尿线变细", "夜尿频多", "尿滴沥"],
+    "age_min": 50,
+    "age_max": 100,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "泌尿外科-前列腺疾病门诊",
+    "triage_advice": "前列腺增生症表现，若突然出现尿潴留需急诊导尿；常规建议查前列腺超声及PSA。"
+  },
+  {
+    "symptoms": ["突发剧烈头晕", "双眼复视", "吞咽困难", "饮水呛咳"],
+    "age_min": 30,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "急诊科-卒中中心",
+    "triage_advice": "高度怀疑后循环缺血/脑干梗死，生命体征可能极不稳定，立即送入抢救室及完善头颅MRI。"
+  },
+  {
+    "symptoms": ["产后心情极度低落", "整日哭泣", "有自伤或伤害婴儿的念头", "失眠"],
+    "age_min": 20,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "心理医学科/精神科急诊",
+    "triage_advice": "重度产后抑郁伴自杀/扩大切伤倾向，属精神科急症，需家属24小时寸步不离陪护并立即就医。"
+  },
+  {
+    "symptoms": ["双下肢对称性水肿", "大量泡沫尿", "眼睑浮肿", "血清白蛋白低"],
+    "age_min": 10,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "肾内科-肾病综合征门诊",
+    "triage_advice": "肾病综合征表现，需查24小时尿蛋白定量、血脂及肾功，必要时需行肾穿刺活检。"
+  },
+  {
+    "symptoms": ["长期口干", "眼干无泪", "多发性龋齿", "腮腺肿大"],
+    "age_min": 30,
+    "age_max": 70,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "风湿免疫科-干燥综合征门诊",
+    "triage_advice": "干燥综合征(SS)表现，建议查抗SSA/SSB抗体及唇腺活检，保护眼角膜及口腔卫生。"
+  },
+  {
+    "symptoms": ["长期反复腹痛", "腹泻与便秘交替", "遇情绪紧张加重", "便常规正常"],
+    "age_min": 18,
+    "age_max": 60,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "消化内科-胃肠道功能性疾病门诊",
+    "triage_advice": "肠易激综合征(IBS)可能，属心身疾病，建议完善肠镜排除器质性病变后调整心态及药物干预。"
+  },
+  {
+    "symptoms": ["无诱因鼻出血", "压迫不易止血", "伴牙龈出血", "全身多发瘀斑"],
+    "age_min": 0,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "血液内科急诊",
+    "triage_advice": "全身凝血功能障碍或严重血小板减少，需急查血常规及凝血象，警惕内脏出血风险。"
+  },
+  {
+    "symptoms": ["突发单耳听力丧失", "伴耳鸣", "无明显耳痛或流脓"],
+    "age_min": 15,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "耳鼻咽喉头颈外科-突发性耳聋急诊",
+    "triage_advice": "突发性耳聋，72小时内为治疗黄金期，需立即安排纯音测听并给予激素及改善微循环治疗。"
+  },
+  {
+    "symptoms": ["儿童身材明显矮小", "生长速度极慢(<4cm/年)", "智力发育正常"],
+    "age_min": 3,
+    "age_max": 14,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "儿科-儿童生长发育及内分泌门诊",
+    "triage_advice": "生长激素缺乏症或特发性矮小可能，需拍摄左手骨龄片，并择期行生长激素激发试验。"
+  },
+  {
+    "symptoms": ["高空坠落史", "骨盆部剧痛", "双下肢不等长", "会阴部瘀斑"],
+    "age_min": 0,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "骨科急危重症中心(创伤急救)",
+    "triage_advice": "骨盆骨折，极易并发腹膜后大出血休克及尿道损伤！不可翻动患者，立即建立多路静脉通道并配血。"
+  },
+  {
+    "symptoms": ["满月脸", "水牛背", "向心性肥胖", "腹部紫纹"],
+    "age_min": 18,
+    "age_max": 65,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "内分泌科-肾上腺及垂体专病门诊",
+    "triage_advice": "库欣综合征典型体征，建议查皮质醇节律及ACTH，必要时行垂体或肾上腺影像学检查。"
+  },
+  {
+    "symptoms": ["双侧手指遇冷发白、发紫后变红", "伴刺痛麻木", "保暖后缓解"],
+    "age_min": 15,
+    "age_max": 50,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "风湿免疫科-硬皮病与雷诺现象门诊",
+    "triage_advice": "雷诺现象，常见于结缔组织病早期（如系统性硬化症），需完善免疫抗体及甲皱微循环检查。"
+  },
+  {
+    "symptoms": ["大面积烧伤(>10%体表面积)", "表皮剥脱", "基底红白相间或苍白", "剧痛或痛觉迟钝"],
+    "age_min": 0,
+    "age_max": 120,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "烧伤整形外科急诊(红区)",
+    "triage_advice": "重度烧伤，存在低血容量休克及感染极高风险，需立即转入烧伤监护病房(BICU)并大量补液。"
+  },
+  {
+    "symptoms": ["育龄期女性", "乳房无痛性肿块", "质硬", "边界不清", "活动度差"],
+    "age_min": 25,
+    "age_max": 65,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "乳腺外科-乳腺肿瘤门诊",
+    "triage_advice": "乳腺癌高危体征，建议尽早行乳腺超声及钼靶X线检查，必要时行穿刺活检明确病理。"
+  },
+  {
+    "symptoms": ["进行性黄疸", "皮肤瘙痒", "陶土色大便", "右上腹隐痛"],
+    "age_min": 40,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "肝胆外科/胆胰外科门诊",
+    "triage_advice": "梗阻性黄疸，警惕胆管癌或胰头癌，需行上腹部增强CT或MRCP明确梗阻部位及性质。"
+  },
+  {
+    "symptoms": ["反复发作性面部剧痛", "如电击、刀割样", "触碰“扳机点”诱发", "持续数秒"],
+    "age_min": 40,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经外科-功能神经外科/疼痛科",
+    "triage_advice": "三叉神经痛表现，严重影响生活质量，建议口服卡马西平，药物无效可考虑微血管减压术。"
+  },
+  {
+    "symptoms": ["新生儿生后1-2天全身黄染", "吸吮无力", "反应差", "母子血型不合"],
+    "age_min": 0,
+    "age_max": 0,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "新生儿重症监护室(NICU)",
+    "triage_advice": "病理性黄疸（溶血性可能大），警惕胆红素脑病，需立即抽血查胆红素水平并安排蓝光照射或换血。"
+  },
+  {
+    "symptoms": ["男性阴囊突发剧烈疼痛", "肿胀", "托起阴囊疼痛加重", "伴恶心"],
+    "age_min": 10,
+    "age_max": 25,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "泌尿外科急诊",
+    "triage_advice": "睾丸扭转可能，属泌尿外科绝对急症！发病6小时内为黄金抢救期，需急诊彩超并急诊手术探查复位。"
+  },
+  {
+    "symptoms": ["育龄期同房后阴道出血", "白带增多伴异味", "偶有下腹坠痛"],
+    "age_min": 20,
+    "age_max": 60,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "妇科-宫颈病变与阴道镜专病门诊",
+    "triage_advice": "接触性出血是宫颈癌典型早期信号，需常规进行TCT及HPV联合筛查，必要时阴道镜下活检。"
+  },
+  {
+    "symptoms": ["剧烈呕吐后突发胸骨后剧痛", "呼吸困难", "皮下气肿", "发热"],
+    "age_min": 18,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "胸外科急诊",
+    "triage_advice": "自发性食管破裂(Boerhaave综合征)，极度凶险！引起纵隔感染及休克，需绝对禁食，急查胸部CT并紧急手术。"
+  },
+  {
+    "symptoms": ["长期大剂量用药史", "全身泛发性紫红色斑片", "表皮松解呈烫伤样", "黏膜糜烂"],
+    "age_min": 10,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "皮肤科重症病房/急诊",
+    "triage_advice": "中毒性表皮坏死松解症(TEN)，致死性大疱性药疹，需立即停用可疑药物，大剂量糖皮质激素及丙球冲击，预防感染。"
+  },
+  {
+    "symptoms": ["反复发作的腰背部疼痛", "夜间痛、晨僵", "活动后减轻", "足跟痛"],
+    "age_min": 15,
+    "age_max": 40,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "风湿免疫科-脊柱关节炎门诊",
+    "triage_advice": "强直性脊柱炎(AS)高危人群，建议查HLA-B27及骶髂关节核磁共振，尽早干预防止脊柱强直畸形。"
+  },
+  {
+    "symptoms": ["突发持续性剧烈下腹痛", "伴频繁呕吐", "停止排气排便", "腹部可见肠型"],
+    "age_min": 18,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "胃肠外科急诊",
+    "triage_advice": "急性绞窄性肠梗阻可能，易致肠坏死，需紧急胃肠减压，行立位腹平片及腹部CT，随时准备急诊剖腹探查。"
+  },
+  {
+    "symptoms": ["儿童睡眠打鼾", "张口呼吸", "反复中耳炎", "腺样体面容"],
+    "age_min": 3,
+    "age_max": 12,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科-小儿鼾症专科",
+    "triage_advice": "腺样体和/或扁桃体肥大，长期缺氧影响大脑发育及面部骨骼，需行鼻咽部侧位片或电子鼻咽镜检查评估手术指征。"
+  },
+  {
+    "symptoms": ["老年人渐进性肢体震颤", "静止时明显", "动作迟缓", "面具脸"],
+    "age_min": 50,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经内科-帕金森与运动障碍专病门诊",
+    "triage_advice": "帕金森病典型症状，需由专科医生进行详细神经系统体格检查及量表评估，指导多巴胺类药物治疗方案。"
+  },
+  {
+    "symptoms": ["突发单侧眼球突出", "结膜充血水肿", "听诊眼部有血管杂音", "视力下降"],
+    "age_min": 20,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经外科/介入神经外科门诊",
+    "triage_advice": "颈内动脉海绵窦瘘(CCF)可能，建议尽早行头颅CTA或全脑血管造影(DSA)，评估血管介入栓塞指征。"
+  },
+  {
+    "symptoms": ["孕中晚期皮肤瘙痒", "手心足底尤甚", "夜间加重", "无皮疹"],
+    "age_min": 20,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "is_emergency": false,
+    "recommended_department": "产科-妊娠期合并症门诊",
+    "triage_advice": "高度怀疑妊娠期肝内胆汁淤积症(ICP)，易引发胎儿宫内窘迫甚至死胎，需急查血清总胆汁酸(TBA)及肝功并加强胎心监护。"
+  },
+  {
+    "symptoms": ["长期吸烟史", "刺激性干咳", "痰中带血丝", "近期体重下降"],
+    "age_min": 40,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "胸外科-肺部结节与肺癌筛查门诊",
+    "triage_advice": "中央型肺癌高危症状，必须立即进行胸部低剂量螺旋CT及支气管镜检查，查肺癌肿瘤标志物。"
+  },
+  {
+    "symptoms": ["婴幼儿高热39度以上", "突发双眼上翻", "四肢强直阵挛", "口吐白沫持续2分钟"],
+    "age_min": 0,
+    "age_max": 6,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "儿科急诊抢救室",
+    "triage_advice": "小儿热性惊厥，需保持患儿呼吸道通畅，侧卧位防止误吸，急诊予以退热解痉处理，排除颅内感染。"
+  },
+  {
+    "symptoms": ["颈部僵硬疼痛", "向下颌及肩臂放射", "手指麻木无力", "持物掉落"],
+    "age_min": 30,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "骨科-脊柱外科门诊",
+    "triage_advice": "神经根型或脊髓型颈椎病可能，颈部避免剧烈活动，建议行颈椎核磁共振(MRI)评估压迫程度。"
+  },
+  {
+    "symptoms": ["持续性心房颤动病史", "突发腹部剧痛", "无固定压痛点", "腹部体征与症状不符"],
+    "age_min": 50,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "血管外科/胃肠外科急诊",
+    "triage_advice": "肠系膜上动脉栓塞可能（症状重而体征轻），极易导致广泛肠坏死，需争分夺秒急查腹部CTA并急诊手术取栓。"
+  },
+  {
+    "symptoms": ["双下肢沉重酸胀", "可见扭曲扩张的青筋", "久站后足踝部水肿", "色素沉着"],
+    "age_min": 30,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "血管外科-静脉曲张微创专科",
+    "triage_advice": "下肢静脉曲张，建议行下肢静脉彩超评估瓣膜功能，日常建议穿戴医用弹力袜，评估微创手术指征。"
+  },
+  {
+    "symptoms": ["月经量进行性增多", "经期延长", "伴严重痛经", "子宫均匀增大"],
+    "age_min": 30,
+    "age_max": 50,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "妇科-子宫内膜异位症与腺肌症门诊",
+    "triage_advice": "子宫腺肌病典型表现，建议非经期行妇科盆腔超声及血清CA125检查，可遵医嘱放置曼月乐环或手术治疗。"
+  },
+  {
+    "symptoms": ["大面积多发斑块红斑", "表面覆有厚层银白色鳞屑", "刮除有薄膜现象及点状出血"],
+    "age_min": 10,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "皮肤科-银屑病(牛皮癣)专病门诊",
+    "triage_advice": "寻常型银屑病典型皮损，建议完善专科评估，避免抓挠及热水烫洗，可考虑生物制剂等靶向治疗。"
+  },
+  {
+    "symptoms": ["突发剧烈头痛", "伴恶心呕吐", "血压极度升高(>220/130mmHg)", "意识模糊"],
+    "age_min": 30,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "急诊科-高血压急症/神经重症",
+    "triage_advice": "高血压脑病或急性脑出血极高危，需立即平卧，心电血压监护，建立静脉通路平稳降压并急查头颅CT。"
+  },
+  {
+    "symptoms": ["剧烈牙痛", "夜间痛加重", "冷热刺激痛明显", "牵涉至同侧耳颞部"],
+    "age_min": 10,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "口腔科-牙体牙髓病科",
+    "triage_advice": "急性牙髓炎典型症状，止痛药效果差，需拍摄口腔全景片或根尖片，局麻下开髓引流缓解剧痛。"
+  },
+  {
+    "symptoms": ["长期进食后上腹部饱胀", "早饱", "嗳气", "胃镜检查仅为浅表性胃炎"],
+    "age_min": 18,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "消化内科-胃肠动力门诊",
+    "triage_advice": "功能性消化不良可能，建议进行C13/C14呼气试验排查幽门螺杆菌，并加用促胃动力药物。"
+  },
+  {
+    "symptoms": ["青少年反复发作意识丧失", "四肢抽搐", "双眼上翻", "伴尿失禁及咬破舌头"],
+    "age_min": 5,
+    "age_max": 30,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经内科-癫痫与发作性疾病专科",
+    "triage_advice": "癫痫全面强直-阵挛发作(大发作)，发作期需急诊处理防窒息；间歇期需完善动态脑电图(VEEG)及头颅核磁。"
+  },
+  {
+    "symptoms": ["单侧面部表情肌瘫痪", "额纹消失", "闭眼不全", "口角歪向健侧"],
+    "age_min": 15,
+    "age_max": 70,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "神经内科/针灸科-面神经炎专病门诊",
+    "triage_advice": "周围性面瘫(Bell麻痹)，除外急性脑血管病后，建议尽早给予糖皮质激素、抗病毒及神经营养治疗，注意眼部保护。"
+  },
+  {
+    "symptoms": ["新生儿频繁吐奶", "呈喷射状呕吐", "胃内容物无胆汁", "右上腹触及橄榄样包块"],
+    "age_min": 0,
+    "age_max": 1,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "小儿外科",
+    "triage_advice": "先天性肥厚性幽门狭窄高度可疑，易致严重脱水及电解质紊乱(低钾低氯性碱中毒)，需行腹部超声明确并择期手术。"
+  },
+  {
+    "symptoms": ["产后哺乳期单侧乳房红肿", "局部发热结块剧痛", "伴全身高热寒战"],
+    "age_min": 20,
+    "age_max": 40,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "乳腺外科急诊",
+    "triage_advice": "急性化脓性乳腺炎甚至乳腺脓肿形成，需急行乳腺彩超明确液化区，必要时穿刺或切开引流，暂停患侧哺乳。"
+  },
+  {
+    "symptoms": ["突发剧烈气胸", "胸痛伴极度呼吸困难", "气管向健侧移位", "颈静脉怒张"],
+    "age_min": 15,
+    "age_max": 50,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "急诊抢救室/胸外科急诊",
+    "triage_advice": "张力性气胸！致命性急症！需立即用粗针头在患侧锁骨中线第2肋间穿刺排气减压，并准备胸腔闭式引流包。"
+  },
+  {
+    "symptoms": ["长期慢性腰痛", "弯腰负重后加重", "伴单侧下肢放射痛及麻木"],
+    "age_min": 30,
+    "age_max": 70,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "骨科-脊柱外科/疼痛科",
+    "triage_advice": "腰椎间盘突出症压迫坐骨神经典型表现，急性期需卧硬板床休息，建议完善腰椎MRI检查。"
+  },
+  {
+    "symptoms": ["中老年人无痛性进行性淋巴结肿大", "颈部或锁骨上淋巴结固定融合", "伴发热盗汗消瘦"],
+    "age_min": 40,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "血液内科/肿瘤内科-淋巴瘤专科门诊",
+    "triage_advice": "恶性淋巴瘤高度可疑，B症状明显，首选完整切除肿大淋巴结行病理及免疫组化检查明确分型。"
+  },
+  {
+    "symptoms": ["孕35周", "突然出现无痛性大量阴道流血", "血色鲜红", "无宫缩"],
+    "age_min": 20,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "is_emergency": true,
+    "recommended_department": "产科急诊(绿色通道)",
+    "triage_advice": "前置胎盘出血！禁止进行任何阴道指诊，立即推车平卧送入产房，持续胎心监护，开放静脉配血，备急诊剖宫产。"
+  },
+  {
+    "symptoms": ["突发单侧关节剧痛(多为第一跖趾关节)", "红肿热痛不能触碰", "夜间痛醒", "饮酒或海鲜史"],
+    "age_min": 20,
+    "age_max": 80,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "风湿免疫科急诊/内分泌科急诊",
+    "triage_advice": "急性痛风性关节炎大发作，建议急查血尿酸及炎症指标，急性期首选秋水仙碱或非甾体抗炎药快速镇痛消炎。"
+  },
+  {
+    "symptoms": ["儿童智力及运动发育迟缓", "特殊面容(眼距宽、鼻梁低)", "肌张力低下"],
+    "age_min": 0,
+    "age_max": 10,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "儿科-遗传及罕见病专科/儿童康复科",
+    "triage_advice": "唐氏综合征(21-三体)等染色体异常疾病可能，需抽血行染色体核型分析，并及早介入全面康复训练。"
+  },
+  {
+    "symptoms": ["反复头痛伴高血压", "发作性出大汗", "心悸", "面色苍白"],
+    "age_min": 20,
+    "age_max": 60,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "泌尿外科/内分泌科-嗜铬细胞瘤专病门诊",
+    "triage_advice": "继发性高血压(嗜铬细胞瘤)典型三联征，高度警惕，需查24小时尿儿茶酚胺及腹部肾上腺CT增强。"
+  },
+  {
+    "symptoms": ["吞咽食物时有哽咽感", "咽部异物感(咳之不出咽之不下)", "与情绪相关", "无进行性加重"],
+    "age_min": 20,
+    "age_max": 60,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科/心理医学科",
+    "triage_advice": "咽异物感(梅核气)或咽喉反流，排查电子喉镜无器质性病变后，需考虑精神心理因素干预。"
+  },
+  {
+    "symptoms": ["突发剧烈腰背部撕裂痛", "伴肉眼血尿", "腹部可触及搏动性包块", "血压下降"],
+    "age_min": 50,
+    "age_max": 90,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "血管外科急危重症中心",
+    "triage_advice": "腹主动脉瘤破裂漏诊或先兆破裂，致死率极高！严禁按压腹部，建立双路大静脉输血通道，急查腹部CTA备急诊介入手术。"
+  },
+  {
+    "symptoms": ["双眼视物模糊", "有飞蚊症或闪光感", "眼前黑影遮挡如同幕布下降"],
+    "age_min": 40,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "眼科-眼底病急诊",
+    "triage_advice": "视网膜脱离典型症状，必须限制眼球活动及头部震动，紧急行眼底镜及眼科B超确诊，争取尽早手术复位以挽救视力。"
+  },
+  {
+    "symptoms": ["进食油腻后右上腹持续疼痛", "阵发性加剧", "向右肩背部放射", "墨菲征阳性"],
+    "age_min": 20,
+    "age_max": 80,
+    "gender": "female",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "肝胆外科急诊",
+    "triage_advice": "急性胆囊炎发作可能，特别是女性患者常见，建议禁食水，急诊查肝胆脾胰彩超及血常规、血淀粉酶鉴别。"
+  },
+  {
+    "symptoms": ["儿童双下肢对称性紫癜", "伴腹痛呕吐", "关节肿痛", "无血小板减少"],
+    "age_min": 3,
+    "age_max": 14,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "儿科-肾脏与风湿免疫门诊",
+    "triage_advice": "过敏性紫癜(IgA血管炎)典型表现，需紧急查尿常规以明确有无紫癜性肾炎，急性期需卧床休息限制下地走动。"
+  },
+  {
+    "symptoms": ["头皮及面部弥漫性皮脂溢出", "红斑伴油腻性鳞屑", "剧烈瘙痒", "脱发加重"],
+    "age_min": 18,
+    "age_max": 50,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "皮肤科-毛发与脂溢性皮炎专科",
+    "triage_advice": "脂溢性皮炎伴雄激素性脱发，建议外用抗真菌洗剂及口服抗雄激素药物规范治疗，忌熬夜及辛辣饮食。"
+  },
+  {
+    "symptoms": ["育龄期闭经", "伴溢乳", "持续性视野缺损(双颞侧偏盲)"],
+    "age_min": 20,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "神经外科/内分泌科-垂体瘤专病中心",
+    "triage_advice": "垂体泌乳素瘤压迫视交叉的高度可疑体征，需抽血查泌乳素(PRL)及垂体核磁增强扫描，视野受损严重需神经外科干预。"
+  },
+  {
+    "symptoms": ["突发单侧下肢极度肿胀", "胀痛明显", "皮温升高呈紫红色", "霍曼斯征阳性"],
+    "age_min": 30,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "血管外科急诊",
+    "triage_advice": "急性下肢深静脉血栓形成(DVT)，极高危导致致死性肺栓塞！严禁按摩、热敷及下地活动，要求轮椅推入超声室查深静脉超声。"
+  },
+  {
+    "symptoms": ["产后大出血>1000ml", "阴道持续流血不凝", "面色苍白", "脉细速及血压骤降"],
+    "age_min": 20,
+    "age_max": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "is_emergency": true,
+    "recommended_department": "产科重症抢救室(启动院内大抢救)",
+    "triage_advice": "产后弥散性血管内凝血(DIC)引发休克！启动全院大出血急救预案(MTP)，麻醉科、输血科、介入科迅速就位抢救生命。"
+  },
+  {
+    "symptoms": ["逐渐加重的乏力及活动后气促", "面色苍白", "舌炎及口角炎", "异食癖"],
+    "age_min": 15,
+    "age_max": 65,
+    "gender": "female",
+    "pregnancy_status": "any",
+    "is_emergency": false,
+    "recommended_department": "血液内科-贫血专病门诊",
+    "triage_advice": "缺铁性贫血典型症状，首查血常规、网织红细胞及铁蛋白，同时需排查慢性失血原因(如月经过多或消化道隐血)。"
+  },
+  {
+    "symptoms": ["全身广泛骨痛", "以腰背和肋骨多见", "轻微外伤即发生骨折", "尿中大量泡沫(本周蛋白)"],
+    "age_min": 50,
+    "age_max": 90,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "血液内科-多发性骨髓瘤专科",
+    "triage_advice": "多发性骨髓瘤高度怀疑(CRAB症状)，老年不明原因骨痛不可轻视，需行骨髓穿刺活检、血清蛋白电泳及免疫固定电泳。"
+  },
+  {
+    "symptoms": ["单侧鼻塞伴流脓血涕", "面颊部胀痛及麻木感", "上列牙齿松动", "同侧眼球移位"],
+    "age_min": 40,
+    "age_max": 80,
+    "gender": "any",
+    "pregnancy_status": "no",
+    "is_emergency": false,
+    "recommended_department": "耳鼻咽喉头颈外科-头颈肿瘤中心",
+    "triage_advice": "上颌窦恶性肿瘤症状群，病情危重，需尽快行鼻窦高分辨率CT及鼻内镜下组织活检病理确诊。"
+  },
+  {
+    "symptoms": ["外伤致头部撞击", "出现短暂昏迷后清醒(中间清醒期)", "随后再次昏迷伴瞳孔散大"],
+    "age_min": 0,
+    "age_max": 100,
+    "gender": "any",
+    "pregnancy_status": "any",
+    "is_emergency": true,
+    "recommended_department": "神经外科重症急诊/创伤中心",
+    "triage_advice": "急性硬膜外血肿引发脑疝！绝对的神经外科急死症，无需任何等待，直接推入CT室扫描后直奔手术室开颅减压！"
+  }
+]

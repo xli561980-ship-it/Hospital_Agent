@@ -1,0 +1,335 @@
+[
+  {
+    "query": "我做头颅MRI，神经系统核磁那个一区应该去哪里报到？",
+    "age": 54,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "核磁共振(MRI)一区(神经系统)"
+  },
+  {
+    "query": "医生约了无痛胃肠镜，内镜中心怎么走？",
+    "age": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "无痛胃肠镜(内镜)中心"
+  },
+  {
+    "query": "腹部和血管超声一区在几楼？",
+    "age": 61,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "超声医学科一区(腹部及血管)"
+  },
+  {
+    "query": "我要办异地医保结算，医保审核窗口在哪里？",
+    "age": 50,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "医保审核与异地结算窗口"
+  },
+  {
+    "query": "多学科MDT会诊中心在哪栋楼？",
+    "age": 48,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "多学科会诊(MDT)中心"
+  },
+  {
+    "query": "放疗直线加速器机房怎么过去？",
+    "age": 63,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "放射治疗科(直线加速器机房)"
+  },
+  {
+    "query": "产前筛查和建档中心是在产科楼吗？",
+    "age": 29,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "expected_intent": "location",
+    "expected_location": "产科建档与产前筛查中心"
+  },
+  {
+    "query": "心血管起搏器随访门诊在门诊楼几层？",
+    "age": 72,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "心血管内科起搏器随访门诊"
+  },
+  {
+    "query": "中西药中央药房发药区在哪里取药？",
+    "age": 36,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "门诊中央药房(中西药发药区)"
+  },
+  {
+    "query": "皮肤科激光美容中心从哪个门过去？",
+    "age": 26,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "皮肤科激光美容中心"
+  },
+  {
+    "query": "胸口剧烈疼，痛往左胳膊放射，还出了一身大汗。",
+    "age": 58,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-胸痛中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "突然一侧胳膊腿没劲，说话含糊，嘴角也歪了。",
+    "age": 70,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-卒中中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "一直非常口渴，尿也多，体重没原因下降，还总是疲乏。",
+    "age": 42,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "内分泌科-糖尿病专科门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "持续性剧烈头痛，喷射样呕吐，脖子也僵硬。",
+    "age": 37,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-神经急重症",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "停经后突然下腹剧痛，阴道有少量流血，脸色发白。",
+    "age": 30,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "expected_intent": "triage",
+    "expected_department": "妇产科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "孩子持续高热39度以上，身上有皮疹，眼睛结膜充血，还有草莓舌。",
+    "age": 6,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "儿科急诊-发热门诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "小便是无痛性的肉眼血尿，整个过程都有血，还伴血块。",
+    "age": 67,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "泌尿外科-泌尿系肿瘤专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "突然呼吸困难，咳粉红色泡沫痰，只能端坐呼吸，还大汗淋漓。",
+    "age": 76,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-心血管急重症",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "接触过敏原后突然气促，嘴唇肿了，全身起风团样皮疹。",
+    "age": 35,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊抢救室(红区)",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "黑便，还吐咖啡色液体，头晕心率也很快。",
+    "age": 64,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-消化急症",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "右下腹痛是转移过来的，发热，还恶心呕吐。",
+    "age": 24,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "普外科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "怀孕30周，双下肢水肿加重，看东西模糊，血压超过160/110。",
+    "age": 31,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "expected_intent": "triage",
+    "expected_department": "产科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "早上关节僵硬超过一小时，两侧小关节对称肿痛，遇冷更明显。",
+    "age": 52,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-类风湿关节炎专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "心悸反复发作，突发突止，脉搏特别快超过150。",
+    "age": 43,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "心血管内科-心律失常专科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "记忆力逐渐减退，最近遗忘严重，方向感也差，性格改变明显。",
+    "age": 75,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "神经内科-记忆与认知障碍专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "不明原因反复发热，口腔溃疡很多，脸上有蝶形红斑，还掉头发。",
+    "age": 28,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-系统性红斑狼疮专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "突发剧烈腰痛，往下腹和会阴部放射，还恶心呕吐，尿里有血。",
+    "age": 46,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "泌尿外科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "吞咽困难越来越重，开始干的咽不下后来稀的也不行，人消瘦，还有胸骨后烧灼感。",
+    "age": 62,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "消化内科-消化道早癌筛查门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "眼睛胀痛很明显，同侧头痛，还恶心呕吐，单眼视力突然下降。",
+    "age": 66,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "眼科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "月经周期紊乱，多毛，重度痤疮，体重也偏胖。",
+    "age": 24,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "妇科内分泌门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "长期慢性咳嗽，咳大量脓臭痰，最近还间断咯血。",
+    "age": 57,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "呼吸与危重症医学科-支气管扩张专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "突然眩晕，感觉东西旋转，伴耳鸣和听力下降，还恶心呕吐。",
+    "age": 47,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "耳鼻咽喉头颈外科-眩晕/耳石症专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "怕热多汗，心悸手抖，体重下降，情绪也容易激动。",
+    "age": 38,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "内分泌科-甲状腺专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "一侧躯干沿神经走向长成簇水疱，神经痛很剧烈。",
+    "age": 63,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "皮肤科-带状疱疹与神经痛专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "严重打鼾，夜间呼吸暂停会憋醒，白天嗜睡，晨起头痛。",
+    "age": 49,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "耳鼻咽喉头颈外科-睡眠呼吸暂停专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "明天德国天气怎么样？",
+    "age": 30,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "帮我订一张机票。",
+    "age": 28,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "附近有没有好吃的餐厅？",
+    "age": 36,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "你叫什么名字，是机器人吗？",
+    "age": 20,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  }
+]

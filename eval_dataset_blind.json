@@ -1,0 +1,304 @@
+[
+  {
+    "query": "头颅核磁要去哪个区报到？片子是在那里等吗？",
+    "age": 54,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "核磁共振(MRI)一区(神经系统)"
+  },
+  {
+    "query": "ICU一病区探视从哪上去？家属入口在哪里？",
+    "age": 60,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "重症医学科(ICU)一病区"
+  },
+  {
+    "query": "静脉配药中心PIVAS在几楼？护士让我过去核对。",
+    "age": 35,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "静脉用药调配中心(PIVAS)"
+  },
+  {
+    "query": "互联网医院线上复诊出问题，线下服务支持在哪里？",
+    "age": 43,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "互联网医院线下服务支持中心"
+  },
+  {
+    "query": "参加临床试验随访，GCP办公室怎么走？",
+    "age": 51,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "临床药理研究中心(GCP)"
+  },
+  {
+    "query": "肺功能检查室是不是在呼吸科附近？我该怎么过去？",
+    "age": 62,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "呼吸与危重症医学科肺功能室"
+  },
+  {
+    "query": "康复PT训练要去哪个大厅？第一次来不认识路。",
+    "age": 49,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "康复医学科物理治疗(PT)大厅"
+  },
+  {
+    "query": "眼科日间手术陪护在哪里等？",
+    "age": 70,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "眼科日间手术中心"
+  },
+  {
+    "query": "口腔颌面外科门诊在几层？",
+    "age": 32,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "口腔科颌面外科门诊"
+  },
+  {
+    "query": "脱敏治疗的过敏科门诊从东门进去吗？",
+    "age": 27,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "变态反应科(过敏)门诊"
+  },
+  {
+    "query": "胸骨后面突然发闷，左肩背发酸，身上一直冒汗。",
+    "age": 59,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-胸痛中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "刚才拿筷子突然掉了，半边脸歪，话也说不完整。",
+    "age": 72,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-卒中中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "突然像爆炸一样头痛，脖子发硬，还怕光。",
+    "age": 46,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-神经急重症",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "停经后肚子一侧疼，下面有点出血，人发虚快晕了。",
+    "age": 29,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "expected_intent": "triage",
+    "expected_department": "妇产科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "孩子烧了四五天，眼睛红，嘴唇裂，手掌脚掌也红肿。",
+    "age": 4,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "儿科急诊-发热门诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "尿色发红，末端还能看到血块，但不尿痛。",
+    "age": 66,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "泌尿外科-泌尿系肿瘤专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "双手掌指关节肿，早晨握拳困难超过一小时，热水泡了才缓一点。",
+    "age": 50,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-类风湿关节炎专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "晒太阳后脸颊起红斑，手指关节痛，最近尿里泡沫也多。",
+    "age": 32,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-系统性红斑狼疮专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "吃饭吞咽越来越噎，最近瘦了不少。",
+    "age": 61,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "消化内科-消化道早癌筛查门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "眼睛突然胀痛，看灯有一圈彩虹，还恶心想吐。",
+    "age": 64,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "眼科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "几个月没来月经，下巴长粗毛，脸上痘痘很多。",
+    "age": 23,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "妇科内分泌门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "每天咳很多脓痰，最近反复咯血。",
+    "age": 56,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "呼吸与危重症医学科-支气管扩张专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "心慌手抖，怕热出汗，眼睛有点突，人也瘦。",
+    "age": 36,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "内分泌科-甲状腺专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "腰侧一条带状小水疱，像针扎一样疼。",
+    "age": 63,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "皮肤科-带状疱疹与神经痛专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "夜里总被憋醒，白天困得不行，早上醒来头痛。",
+    "age": 48,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "耳鼻咽喉头颈外科-睡眠呼吸暂停专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "颈前结节最近变大，说话哑了，吞咽也卡。",
+    "age": 45,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "基本外科-甲状腺外科专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "爬楼小腿抽紧，必须歇一下才缓解，脚还老是凉。",
+    "age": 65,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "血管外科-外周动脉疾病专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "产后两周情绪很崩溃，老说不想活，还说想抱着孩子跳下去。",
+    "age": 31,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "心理医学科/精神科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "眼皮腿都肿，尿泡沫多，体重一下涨了。",
+    "age": 42,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "肾内科-肾病综合征门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "左小腿突然肿起来，按着疼，还有点热，走路更疼。",
+    "age": 57,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "血管外科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "医院附近有没有安静点的咖啡店？",
+    "age": 28,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "医保报销比例能不能帮我算一下？",
+    "age": 45,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "今天大乐透开奖号码是多少？",
+    "age": 38,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "你会不会写一首诗？",
+    "age": 22,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "帮我查一下今晚航班延误情况。",
+    "age": 34,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "支付宝付款能不能退款到原账户？",
+    "age": 40,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  }
+]

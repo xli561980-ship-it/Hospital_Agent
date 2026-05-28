@@ -1,0 +1,205 @@
+[
+  {
+    "query": "采血前那个管子的贴纸在哪自助打？我已经挂完号了。",
+    "age": 31,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "静脉采血抽血机自助打印区"
+  },
+  {
+    "query": "医生让我去做派特CT，我绕了半天没找到入口，是不是要下到地下？",
+    "age": 55,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "PET-CT分子影像中心"
+  },
+  {
+    "query": "红色处方开的麻醉止痛药，应该在哪个窗口领？",
+    "age": 62,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "毒麻药品专门发放窗口"
+  },
+  {
+    "query": "我爸走不动了，门诊有没有地方可以借轮椅？",
+    "age": 70,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "门诊便民轮椅租借处"
+  },
+  {
+    "query": "睡觉打呼噜，大夫开了整夜监测，那个睡眠检查室怎么走？",
+    "age": 46,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "睡眠医学中心(多导睡眠监测室)"
+  },
+  {
+    "query": "出院资料要复印报销，还能寄回老家吗？到哪里办？",
+    "age": 40,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "location",
+    "expected_location": "病案复印与邮寄服务处"
+  },
+  {
+    "query": "怀孕做大排畸的超声是在产科那边还是医技楼？",
+    "age": 29,
+    "gender": "female",
+    "pregnancy_status": "yes",
+    "expected_intent": "location",
+    "expected_location": "妇产科超声中心(胎儿排畸)"
+  },
+  {
+    "query": "我只想问附近有什么好吃的。",
+    "age": 25,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "明天北京会不会下雨？",
+    "age": 30,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "帮我订一张去上海的高铁票。",
+    "age": 42,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "other"
+  },
+  {
+    "query": "胸口突然像被石头压住，左胳膊也酸痛，身上不停冒冷汗。",
+    "age": 58,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-胸痛中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "说话突然说不清，右边胳膊腿使不上劲，嘴角也歪了。",
+    "age": 67,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "急诊科-卒中中心",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "孩子烧了快五天，眼睛红红的，嘴唇也红，手脚有点肿。",
+    "age": 5,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "儿科急诊-发热门诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "总觉得口渴，老跑厕所，饭量没少但裤腰松了，整个人没力气。",
+    "age": 43,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "内分泌科-糖尿病专科门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "早上小便颜色像洗肉水，还有一块一块的血，但肚子不疼。",
+    "age": 68,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "泌尿外科-泌尿系肿瘤专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "手指关节早上僵住很久，两个手腕也肿痛，热水泡了才慢慢能动。",
+    "age": 52,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-类风湿关节炎专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "嘴干得半夜要起来喝水，眼睛干涩，最近蛀牙变多，耳朵下面老胀。",
+    "age": 49,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "风湿免疫科-干燥综合征门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "月经一点规律都没有，脸上爆痘，嘴边汗毛变粗，人也越来越胖。",
+    "age": 26,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "妇科内分泌门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "脖子前侧摸到硬包，最近长大了，说话变沙哑，吞东西也不顺。",
+    "age": 47,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "基本外科-甲状腺外科专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "走一小段路小腿就酸痛发麻，停一会儿又好，脚总是发冷，我烟龄很长。",
+    "age": 63,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "血管外科-外周动脉疾病专科",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "最近记性差得离谱，出门会迷路，还老怀疑别人偷东西，家里人很担心。",
+    "age": 76,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "神经内科-记忆与认知障碍专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "一侧脸突然不会动，抬眉毛也不行，喝水会从嘴角漏出来。",
+    "age": 38,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "神经内科/针灸科-面神经炎专病门诊",
+    "is_emergency_expected": false
+  },
+  {
+    "query": "刚吐得很厉害，之后胸骨后面疼得厉害，还觉得喘不上气，脖子皮下摸着咯吱响。",
+    "age": 44,
+    "gender": "male",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "胸外科急诊",
+    "is_emergency_expected": true
+  },
+  {
+    "query": "每次月经都痛得请假，量越来越多，拖好多天，检查说子宫整体偏大。",
+    "age": 39,
+    "gender": "female",
+    "pregnancy_status": "no",
+    "expected_intent": "triage",
+    "expected_department": "妇科-子宫内膜异位症与腺肌症门诊",
+    "is_emergency_expected": false
+  }
+]

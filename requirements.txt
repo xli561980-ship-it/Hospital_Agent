@@ -1,0 +1,9 @@
+langgraph==1.1.10
+langchain==1.2.18
+langchain-community==0.4.1
+langchain-openai==1.2.1
+langchain-google-genai==4.2.2
+chromadb==1.5.9
+scikit-learn==1.7.2
+streamlit==1.57.0
+python-dotenv==1.2.2
