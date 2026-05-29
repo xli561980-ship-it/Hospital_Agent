@@ -39,6 +39,7 @@ class State(TypedDict, total=False):
     triage_positive_findings: list[str]
     triage_negative_findings: list[str]
     triage_interview_reason: Optional[str]
+    triage_clarification_rounds: int
     primary_symptom: Optional[str]
 
     location_results: list[dict]
@@ -51,3 +52,4 @@ class State(TypedDict, total=False):
     registration_location: Optional[dict]
     slot_extract_source: Optional[str]
     safety_boundary_violation: bool
+    _missing_fields: list[str]

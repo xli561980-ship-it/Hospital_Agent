@@ -594,11 +594,275 @@ def _merge_state_list(state: State, key: str, values: list[str]) -> None:
     state[key] = _dedupe_keep_order(_ensure_str_list(state.get(key)) + [str(x) for x in values if str(x).strip()])
 
 
+def _safe_int(value, default: int = 0) -> int:
+    try:
+        return int(value)
+    except Exception:
+        return default
+
+
 def _safe_float(value, default: float = 0.0) -> float:
     try:
         return float(value)
     except Exception:
         return default
+
+
+def _has_any_term(text: str, terms: list[str]) -> bool:
+    return any(term and term in text for term in terms)
+
+
+TRIAGE_FINDING_TERMS: dict[str, list[str]] = {
+    "突然发生/明显加重": ["突然", "突发", "明显加重", "越来越重", "剧烈", "爆炸样"],
+    "喷射性呕吐": ["喷射性呕吐", "喷射样呕吐"],
+    "呕吐": ["呕吐", "恶心呕吐", "吐了", "吐得", "吐咖啡", "吐血", "猛吐", "剧烈吐"],
+    "发热": ["发热", "发烧", "高热"],
+    "颈部僵硬": ["颈部僵硬", "脖子僵硬", "脖子发硬", "颈强直"],
+    "肢体无力": ["肢体无力", "单侧肢体无力", "一侧无力", "手脚无力", "胳膊腿没劲"],
+    "言语不清": ["言语不清", "言语含糊", "说话不清", "口齿不清"],
+    "口角歪斜": ["口角歪斜", "嘴歪"],
+    "意识异常": ["意识异常", "意识不清", "意识模糊", "昏迷", "晕倒", "反应差"],
+    "视物异常": ["视物异常", "视力下降", "视物不清", "复视", "看不清"],
+    "呼吸困难": ["呼吸困难", "喘不上气", "气短", "憋气"],
+    "心慌大汗": ["心慌", "大汗", "出汗", "冷汗"],
+    "放射至左肩左臂": ["放射至左肩", "放射至左臂", "左肩", "左臂", "左肩左臂"],
+    "咳嗽喘息": ["咳嗽", "咳痰", "喘息", "哮鸣"],
+    "反酸烧心": ["反酸", "烧心"],
+    "黑便/便血": ["黑便", "便血", "咖啡色液体"],
+    "右下腹转移痛": ["转移性右下腹痛", "右下腹痛", "右下腹"],
+    "孕期相关情况": ["怀孕", "孕期", "妊娠", "阴道流血", "停经"],
+    "持续高热": ["持续高热", "高热不退"],
+    "皮疹": ["皮疹", "红疹", "风团"],
+    "老人/儿童/孕期": ["老人", "老年", "儿童", "小孩", "孕期", "怀孕"],
+    "出血": ["出血", "流血", "咯血", "吐血", "便血", "黑便"],
+    "外伤": ["外伤", "受伤", "撞击", "摔伤", "扭伤"],
+}
+
+
+TRIAGE_CLARIFICATION_CATEGORIES: tuple[dict, ...] = (
+    {
+        "id": "headache_dizziness",
+        "pattern": r"(头痛|头疼|头晕|眩晕)",
+        "question": "请确认头痛是否突然发生或明显加重，是否伴随喷射性呕吐、发热/颈部僵硬、肢体无力、言语不清、意识异常或视物异常？",
+        "findings": ["突然发生/明显加重", "喷射性呕吐", "呕吐", "发热", "颈部僵硬", "肢体无力", "言语不清", "意识异常", "视物异常"],
+        "reason": "宽泛头痛/头晕症状需要先确认关键伴随表现",
+    },
+    {
+        "id": "chest_breathing",
+        "pattern": r"(胸痛|胸闷|心慌|气短|呼吸困难|喘不上气|憋气)",
+        "question": "请确认胸闷/胸痛是否突然发生，是否伴随呼吸困难、心慌大汗、放射至左肩左臂、咳嗽喘息、反酸烧心、麻木无力或意识异常？",
+        "findings": ["突然发生/明显加重", "呼吸困难", "心慌大汗", "放射至左肩左臂", "咳嗽喘息", "反酸烧心", "肢体无力", "意识异常"],
+        "reason": "宽泛胸痛/胸闷症状需要先确认关键伴随表现",
+    },
+    {
+        "id": "abdominal_gastric",
+        "pattern": r"(腹痛|肚子痛|肚子疼|胃不舒服|胃痛|胃疼|恶心呕吐|恶心|呕吐)",
+        "question": "请确认腹痛/胃部不适的位置和持续时间，是否伴随发热、呕吐、黑便/便血、右下腹转移痛、胸闷胸痛或孕期相关情况？",
+        "findings": ["发热", "呕吐", "黑便/便血", "右下腹转移痛", "呼吸困难", "孕期相关情况"],
+        "reason": "宽泛腹痛/胃部不适需要先确认部位、持续时间和关键伴随表现",
+    },
+    {
+        "id": "fever_cough_wheeze",
+        "pattern": r"(发热|发烧|咳嗽|喘|呼吸困难)",
+        "question": "请确认是否伴随呼吸困难、胸痛、持续高热、皮疹、意识异常，或老人/儿童/孕期等特殊情况？",
+        "findings": ["呼吸困难", "持续高热", "皮疹", "意识异常", "老人/儿童/孕期"],
+        "reason": "发热、咳嗽或喘等症状需要先确认关键伴随表现和特殊人群情况",
+    },
+    {
+        "id": "numbness_weakness",
+        "pattern": r"(麻木|无力)",
+        "question": "请确认麻木/无力的部位，是否突然发生，是否伴随言语不清、口角歪斜、意识异常、头痛头晕或胸闷胸痛？",
+        "findings": ["突然发生/明显加重", "言语不清", "口角歪斜", "意识异常", "视物异常"],
+        "reason": "麻木或无力需要先确认发生方式、部位和关键伴随表现",
+    },
+    {
+        "id": "trauma_bleeding",
+        "pattern": r"(外伤|受伤|撞击|摔伤|出血|流血|咯血|吐血|便血|黑便)",
+        "question": "请确认受伤/出血部位和发生时间，是否出血不止、明显肿胀变形、头部撞击、意识异常、胸腹痛或活动受限？",
+        "findings": ["外伤", "出血", "意识异常"],
+        "reason": "外伤或出血需要先确认部位、时间和关键伴随表现",
+    },
+)
+
+
+def _is_generic_negative_followup(text: str) -> bool:
+    t = _normalize_symptom_text(text or "")
+    return bool(re.fullmatch(r"(都没有|全都没有|没有这些|没有上述|以上都没有|上述都没有|均无|均没有)", t))
+
+
+def _term_negated(text: str, terms: list[str]) -> bool:
+    t = text or ""
+    for term in terms:
+        if not term:
+            continue
+        if re.search(rf"(没有|没|无|否认|不伴|未见|未出现|不是|并非|不).{{0,12}}{re.escape(term)}", t):
+            return True
+        if re.search(rf"{re.escape(term)}.{{0,8}}(没有|没|无|否认|不明显|未出现)", t):
+            return True
+    return False
+
+
+def _term_affirmed(text: str, terms: list[str]) -> bool:
+    if _term_negated(text, terms):
+        return False
+    return _has_any_term(text, terms)
+
+
+def _extract_followup_findings(state: State, text: str) -> tuple[list[str], list[str]]:
+    positive: list[str] = []
+    negative: list[str] = []
+    if not (text or "").strip():
+        return positive, negative
+
+    previous_question = " ".join(_ensure_str_list(state.get("triage_followup_questions")))
+    generic_denial = bool(re.search(r"(都没有|全都没有|没有这些|没有上述|以上都没有|上述都没有|均无|均没有)", text))
+    for finding, terms in TRIAGE_FINDING_TERMS.items():
+        if _term_negated(text, terms) or (generic_denial and _has_any_term(previous_question, terms)):
+            negative.append(finding)
+        elif _term_affirmed(text, terms):
+            positive.append(finding)
+
+    return _dedupe_keep_order(positive), _dedupe_keep_order(negative)
+
+
+def _merge_followup_answer_into_state(state: State, text: str) -> None:
+    if not state.get("symptom") and not state.get("triage_followup_questions"):
+        return
+    positive, negative = _extract_followup_findings(state, text)
+    if positive:
+        _merge_state_list(state, "triage_positive_findings", positive)
+    if negative:
+        _merge_state_list(state, "triage_negative_findings", negative)
+
+
+def _combined_triage_text(state: State) -> str:
+    parts = [
+        str(state.get("symptom") or ""),
+        " ".join(_ensure_str_list(state.get("triage_positive_findings"))),
+        " ".join("无" + x for x in _ensure_str_list(state.get("triage_negative_findings"))),
+    ]
+    return _normalize_symptom_text("；".join(x for x in parts if x.strip()))
+
+
+def _strong_candidate_match_count(candidate: dict, symptom_text: str) -> int:
+    qn = _normalize_symptom_text(symptom_text or "")
+    matched = []
+    for raw in candidate.get("matched_by_retrieval") or []:
+        kw = _normalize_symptom_text(str(raw or ""))
+        if kw and kw in qn:
+            matched.append(kw)
+    return len(set(matched))
+
+
+def _has_clear_emergency_red_flags(text: str, ranked: list[dict] | None = None) -> bool:
+    t = _normalize_symptom_text(text or "")
+    if not t:
+        return False
+
+    sudden = _term_affirmed(t, TRIAGE_FINDING_TERMS["突然发生/明显加重"])
+    limb_weakness = _term_affirmed(t, TRIAGE_FINDING_TERMS["肢体无力"])
+    speech_or_face = _term_affirmed(t, TRIAGE_FINDING_TERMS["言语不清"]) or _term_affirmed(t, TRIAGE_FINDING_TERMS["口角歪斜"])
+    consciousness = _term_affirmed(t, TRIAGE_FINDING_TERMS["意识异常"])
+    breathing = _term_affirmed(t, TRIAGE_FINDING_TERMS["呼吸困难"])
+    sweating = _term_affirmed(t, TRIAGE_FINDING_TERMS["心慌大汗"])
+    left_radiation = _term_affirmed(t, TRIAGE_FINDING_TERMS["放射至左肩左臂"])
+    vomiting = _term_affirmed(t, TRIAGE_FINDING_TERMS["呕吐"]) or _term_affirmed(t, TRIAGE_FINDING_TERMS["喷射性呕吐"])
+    fever = _term_affirmed(t, TRIAGE_FINDING_TERMS["发热"])
+    neck_stiff = _term_affirmed(t, TRIAGE_FINDING_TERMS["颈部僵硬"])
+    bleeding = _term_affirmed(t, TRIAGE_FINDING_TERMS["出血"])
+
+    if sudden and limb_weakness and (speech_or_face or consciousness):
+        return True
+    if re.search(r"(胸痛|胸闷|胸骨后痛)", t) and (left_radiation or sweating or breathing):
+        return True
+    if re.search(r"(抽筋|抽搐|惊厥)", t) and re.search(r"(双眼上翻|两眼往上翻|口吐白沫|四肢强直|浑身绷)", t):
+        return True
+    if re.search(r"(突发|突然|持续性)?剧烈头痛|爆炸样头痛", t) and (
+        vomiting or neck_stiff or consciousness or limb_weakness or speech_or_face or _term_affirmed(t, TRIAGE_FINDING_TERMS["视物异常"])
+    ):
+        return True
+    if bleeding and re.search(r"(大量|不止|大出血|血压骤降|面色苍白|黑便|便血|呕吐咖啡色)", t):
+        return True
+    if re.search(r"(转移性右下腹痛|右下腹痛)", t) and (fever or vomiting):
+        return True
+    if _term_affirmed(t, TRIAGE_FINDING_TERMS["外伤"]) and (
+        consciousness or re.search(r"(关节畸形|骨擦音|反常活动|剧痛)", t)
+    ):
+        return True
+
+    for candidate in (ranked or [])[:3]:
+        rule = candidate.get("rule") or {}
+        if not isinstance(rule, dict) or not bool(rule.get("is_emergency")):
+            continue
+        if _strong_candidate_match_count(candidate, t) >= 2:
+            return True
+    return False
+
+
+def _category_findings_covered(state: State, category: dict) -> int:
+    relevant = set(category.get("findings") or [])
+    positives = set(_ensure_str_list(state.get("triage_positive_findings")))
+    negatives = set(_ensure_str_list(state.get("triage_negative_findings")))
+    return len(relevant & (positives | negatives))
+
+
+def _has_sufficient_triage_context(state: State, ranked: list[dict] | None, category: dict) -> bool:
+    symptom = str(state.get("symptom") or "")
+    t = _normalize_symptom_text(symptom)
+    if _category_findings_covered(state, category) >= 2:
+        return True
+    if re.search(r"(多年|长期|反复|既往|老毛病|和以前一样|跟以前一样)", t) and _category_findings_covered(state, category) >= 1:
+        return True
+
+    top = (ranked or [])[:1]
+    if not top:
+        return False
+    candidate = top[0]
+    exact_count = _strong_candidate_match_count(candidate, symptom)
+    if exact_count < 2:
+        return False
+    rule = candidate.get("rule") or {}
+    if not isinstance(rule, dict):
+        return False
+    if bool(rule.get("is_emergency")):
+        return True
+    try:
+        score = float(candidate.get("retrieval_score") or 0.0)
+    except Exception:
+        score = 0.0
+    # Avoid treating a plain "头痛/头疼" match against the generic headache rule as fully clarified.
+    dep = str(rule.get("recommended_department") or rule.get("department") or "")
+    if dep == "神经内科" and re.fullmatch(r"(我)?(头痛|头疼|偏头痛)(挂什么科|看什么科)?", t):
+        return False
+    return score >= 20.0
+
+
+def _needs_triage_clarification(state: State, ranked: list[dict] | None = None) -> tuple[bool, str, list[str]]:
+    symptom = str(state.get("symptom") or "").strip()
+    if not symptom:
+        return False, "", []
+
+    text = _combined_triage_text(state)
+    if _has_clear_emergency_red_flags(text, ranked):
+        return False, "", []
+
+    rounds = _safe_int(state.get("triage_clarification_rounds"), 0)
+    if rounds >= 2:
+        return False, "", []
+    # A deterministic broad-symptom clarification is intentionally finite. After one answer,
+    # downstream rule/LLM matching or the fallback interview can proceed.
+    if rounds >= 1:
+        return False, "", []
+
+    for category in TRIAGE_CLARIFICATION_CATEGORIES:
+        if not re.search(str(category.get("pattern") or ""), text):
+            continue
+        if _has_sufficient_triage_context(state, ranked, category):
+            return False, "", []
+        return True, str(category.get("reason") or "信息不足，需要先澄清关键分诊信息"), [
+            str(category.get("question") or "").strip()
+        ]
+    return False, "", []
 
 
 TRIAGE_INTERVIEW_LLM_SYSTEM = (
@@ -787,6 +1051,39 @@ def _build_triage_followup(state: State) -> str:
             parts.append("性别（男/女）")
         parts.append("主要症状（哪里不舒服/哪里疼，最明显的表现是什么）")
         return "为了推荐科室，请补充：" + "、".join(parts) + "。"
+    if missing:
+        parts = []
+        if "年龄" in missing:
+            parts.append("年龄")
+        if "性别" in missing:
+            parts.append("性别（男/女）")
+        if parts:
+            return "为了推荐科室，请补充：" + "、".join(parts) + "。"
+
+    if state.get("triage_match_source") == "clarification_required":
+        lines = ["目前信息还不足以安全推荐具体科室。"]
+        recorded = []
+        if state.get("age") is not None:
+            recorded.append(f"{state.get('age')}岁")
+        gender = state.get("gender")
+        if gender == "male":
+            recorded.append("男")
+        elif gender == "female":
+            recorded.append("女")
+        primary = str(state.get("primary_symptom") or state.get("symptom") or "").strip()
+        if primary:
+            recorded.append(primary)
+        if recorded:
+            lines.append("已记录：" + "，".join(recorded) + "。")
+        questions = _ensure_str_list(state.get("triage_followup_questions"))
+        if questions:
+            q = questions[0]
+            lines.append(q if q.startswith("请") else "请确认：" + q)
+        lines.append(
+            "如果出现突发胸痛/胸闷伴呼吸困难、大汗或放射痛，或突发剧烈头痛、肢体无力、意识异常、大量出血，"
+            "请优先前往急诊分诊台。"
+        )
+        return "\n".join(lines)
 
     candidate_depts = _dedupe_keep_order(_ensure_str_list(state.get("triage_candidate_departments")))[:5]
     primary = str(state.get("primary_symptom") or state.get("symptom") or "").strip()
@@ -1393,17 +1690,50 @@ def ingest_and_transition(state: State) -> State:
     # Do not let generic "no other symptoms" overwrite existing symptom unless user explicitly resets triage.
     if symptom is not None and symptom.strip():
         s = symptom.strip()
-        if not (
-            s in {"没有其他症状", "无其他症状", "没有别的症状", "无别的症状", "无其他不适", "没有其他不适", "无不适", "没有不适"}
-            and state.get("symptom")
-            and not _user_resets_triage(text)
-        ):
+        generic_no_symptom = s in {
+            "没有其他症状",
+            "无其他症状",
+            "没有别的症状",
+            "无别的症状",
+            "无其他不适",
+            "没有其他不适",
+            "无不适",
+            "没有不适",
+        } or _is_generic_negative_followup(s)
+        if not (generic_no_symptom and not _user_resets_triage(text)):
             if state.get("current_phase") == "TRIAGE" and state.get("symptom") and not _user_resets_triage(text):
                 state["symptom"] = _merge_text_slot(state.get("symptom"), s)
             else:
                 state["symptom"] = s
             if not state.get("primary_symptom"):
                 state["primary_symptom"] = s
+
+    _merge_followup_answer_into_state(state, text)
+
+    if (
+        state.get("current_phase") == "RECOMMENDED"
+        and symptom is not None
+        and not _user_asks_schedule(text)
+        and not _user_resets_triage(text)
+    ):
+        state["current_phase"] = "TRIAGE"
+        state["department"] = None
+        state["triage_advice"] = None
+        state["is_emergency"] = False
+        state["match_confidence"] = None
+        state["matched_symptoms"] = []
+        state["matched_rule_id"] = None
+        state["triage_match_source"] = None
+        state["triage_candidate_rules"] = []
+        state["triage_llm_reason"] = None
+        state["triage_candidate_departments"] = []
+        state["triage_possible_conditions"] = []
+        state["triage_positive_findings"] = []
+        state["triage_negative_findings"] = []
+        state["triage_followup_questions"] = []
+        state["triage_interview_reason"] = None
+        state["triage_clarification_rounds"] = 0
+        state["primary_symptom"] = state.get("symptom")
 
     # triage intent
     if _user_resets_triage(text):
@@ -1423,6 +1753,7 @@ def ingest_and_transition(state: State) -> State:
         state["triage_negative_findings"] = []
         state["triage_followup_questions"] = []
         state["triage_interview_reason"] = None
+        state["triage_clarification_rounds"] = 0
         state["primary_symptom"] = None
 
     if state["current_phase"] in {"INIT", "TRIAGE"}:
@@ -1478,9 +1809,20 @@ def extract_triage(state: State) -> State:
     if not symptom:
         missing.append("主要症状")
     state["_missing_fields"] = missing
-    if "主要症状" in missing:
+    if missing:
         state["current_phase"] = "TRIAGE"
+        state["department"] = None
+        state["triage_advice"] = None
+        state["is_emergency"] = False
+        state["match_confidence"] = 0.0
+        state["matched_symptoms"] = []
+        state["matched_rule_id"] = None
+        state["triage_match_source"] = "missing_fields"
         state["triage_followup_questions"] = []
+        state["registration_steps"] = []
+        state["registration_location"] = None
+        state["schedule_candidates"] = []
+        state["schedule_window"] = []
         return state
 
     dep = None
@@ -1488,6 +1830,29 @@ def extract_triage(state: State) -> State:
     is_emergency = False
     confidence = 0.0
     matched_symptoms: list[str] = []
+
+    ranked = _rank_triage_candidates(age, gender, pregnancy_status, symptom, limit=8)
+    state["triage_candidate_rules"] = _triage_candidate_payload(ranked)
+
+    need_clarify, clarify_reason, clarify_questions = _needs_triage_clarification(state, ranked)
+    if need_clarify:
+        state["current_phase"] = "TRIAGE"
+        state["department"] = None
+        state["triage_advice"] = None
+        state["is_emergency"] = False
+        state["match_confidence"] = 0.0
+        state["matched_symptoms"] = []
+        state["matched_rule_id"] = None
+        state["triage_followup_questions"] = clarify_questions[:1]
+        state["triage_interview_reason"] = clarify_reason
+        state["triage_match_source"] = "clarification_required"
+        state["triage_candidate_departments"] = _broad_candidate_departments(str(symptom or ""))[:5]
+        state["triage_clarification_rounds"] = _safe_int(state.get("triage_clarification_rounds"), 0) + 1
+        state["registration_steps"] = []
+        state["registration_location"] = None
+        state["schedule_candidates"] = []
+        state["schedule_window"] = []
+        return state
 
     semantic_match = _triage_match_llm(
         age=age,
@@ -1524,7 +1889,6 @@ def extract_triage(state: State) -> State:
         )
         state["matched_rule_id"] = None
         state["triage_match_source"] = "rule_fallback"
-        ranked = _rank_triage_candidates(age, gender, pregnancy_status, symptom, limit=8)
         state["triage_candidate_rules"] = _triage_candidate_payload(ranked)
         state["triage_llm_reason"] = None
 
@@ -1548,6 +1912,7 @@ def extract_triage(state: State) -> State:
 
     state["_missing_fields"] = []
     state["current_phase"] = "RECOMMENDED"
+    state["triage_followup_questions"] = []
 
     # Proactively prepare registration + schedule window (no need for user to ask).
     state["registration_steps"] = [
