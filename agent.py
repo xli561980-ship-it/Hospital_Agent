@@ -1,69 +1,23 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Annotated, Literal, Optional, TypedDict
+from typing import Optional
 
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
-from langgraph.graph.message import add_messages
 
+from src.config.settings import env_flag, load_agent_now, load_llm_settings
+from src.guardrails.medical_safety import (
+    compliant_replacement,
+    contains_forbidden_medical,
+    strip_forbidden_tech,
+)
+from src.schemas.agent_state import Action, Intent, Phase, State
 from tools import get_doctor_schedule, search_location
-
-Intent = Literal["location_query", "triage_consult", "other"]
-Phase = Literal["INIT", "TRIAGE", "RECOMMENDED", "SCHEDULE"]
-Action = Literal["LOCATION", "TRIAGE", "SCHEDULE", "OTHER"]
-
-
-class State(TypedDict, total=False):
-    messages: Annotated[list[BaseMessage], add_messages]
-
-    # explicit state machine
-    current_phase: Phase
-    intent: Intent
-    action: Action
-    intent_source: Optional[str]
-
-    # slots
-    age: Optional[int]
-    gender: Optional[str]
-    pregnancy_status: Optional[str]
-    symptom: Optional[str]
-
-    # extracted triage output (from rules)
-    department: Optional[str]
-    triage_advice: Optional[str]
-    is_emergency: bool
-    match_confidence: Optional[float]
-    matched_symptoms: list[str]
-    matched_rule_id: Optional[str]
-    triage_match_source: Optional[str]
-    triage_candidate_rules: list[dict]
-    triage_llm_reason: Optional[str]
-    triage_followup_questions: list[str]
-    triage_candidate_departments: list[str]
-    triage_possible_conditions: list[str]
-    triage_positive_findings: list[str]
-    triage_negative_findings: list[str]
-    triage_interview_reason: Optional[str]
-    primary_symptom: Optional[str]
-
-    # extracted location output
-    location_results: list[dict]
-
-    # schedule planning
-    schedule_day: Optional[str]  # Monday..Sunday
-    schedule_candidates: list[dict]  # [{day:..., items:[...]}]
-    schedule_window: list[dict]  # [{day:..., items:[...]}]
-
-    # registration help
-    registration_steps: list[str]
-    registration_location: Optional[dict]
-    slot_extract_source: Optional[str]
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -74,21 +28,7 @@ WEEKDAYS_CN = ["周一", "周二", "周三", "周四", "周五", "周六", "周�
 
 
 def _load_now() -> datetime:
-    """
-    Default to real current time, but allow deterministic demos/evals via env.
-    Accepted examples: 2026-05-11, 2026-05-11T09:00:00
-    """
-    raw = os.getenv("HOSPITAL_AGENT_NOW", "").strip()
-    if raw:
-        for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
-            try:
-                dt = datetime.strptime(raw, fmt)
-                if fmt == "%Y-%m-%d":
-                    return dt.replace(hour=9, minute=0, second=0)
-                return dt
-            except ValueError:
-                pass
-    return datetime.now()
+    return load_agent_now()
 
 
 NOW = _load_now()
@@ -228,33 +168,31 @@ def _get_llm():
     """
     Shared chat model: intent classification + final reply generation.
     """
-    try:
-        timeout = float(os.getenv("LLM_TIMEOUT_SECONDS", "8"))
-    except Exception:
-        timeout = 8.0
-    provider = os.getenv("LLM_PROVIDER", "gemini").strip().lower()
-    if provider == "gemini":
+    settings = load_llm_settings()
+    if settings.provider == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
 
-        api_key = os.getenv("GOOGLE_API_KEY", "").strip()
-        if not api_key:
+        if not settings.google_api_key:
             raise RuntimeError("GOOGLE_API_KEY is not set")
-        model = os.getenv("GEMINI_MODEL", "gemini-1.5-flash").strip()
         return ChatGoogleGenerativeAI(
-            model=model,
+            model=settings.gemini_model,
             temperature=0.2,
-            google_api_key=api_key,
-            request_timeout=timeout,
+            google_api_key=settings.google_api_key,
+            request_timeout=settings.timeout_seconds,
             retries=0,
         )
 
     from langchain_openai import ChatOpenAI
 
-    api_key = os.getenv("OPENAI_API_KEY", "").strip()
-    if not api_key:
+    if not settings.openai_api_key:
         raise RuntimeError("OPENAI_API_KEY is not set")
-    model = os.getenv("OPENAI_MODEL", "gpt-4o-mini").strip()
-    return ChatOpenAI(model=model, temperature=0.2, api_key=api_key, timeout=timeout, max_retries=0)
+    return ChatOpenAI(
+        model=settings.openai_model,
+        temperature=0.2,
+        api_key=settings.openai_api_key,
+        timeout=settings.timeout_seconds,
+        max_retries=0,
+    )
 
 
 SYSTEM_PROMPT = (
@@ -977,7 +915,7 @@ def _triage_match(
 
 
 def _use_triage_llm() -> bool:
-    return os.getenv("USE_TRIAGE_LLM", "true").strip().lower() in {"1", "true", "yes", "on"}
+    return env_flag("USE_TRIAGE_LLM", True)
 
 
 def _rank_triage_candidates(
@@ -1205,15 +1143,7 @@ def _collect_schedule_window(dept: str, start_day: str, horizon: int = 6, max_da
     return out
 
 
-def _strip_forbidden_tech(text: str) -> str:
-    t = (text or "").strip()
-    t = re.sub(r"\b(mock|debug|json|\.json)\b", "", t, flags=re.IGNORECASE)
-    t = re.sub(r"（[^）]*(mock|debug|json|数据源|调试)[^）]*）", "", t, flags=re.IGNORECASE)
-    t = re.sub(r"\([^)]*(mock|debug|json|data source)[^)]*\)", "", t, flags=re.IGNORECASE)
-    # If a provider accidentally returns structured chunks printed as repr, strip signature-like blobs.
-    t = re.sub(r"signature['\"]?\s*[:=]\s*['\"][A-Za-z0-9+/=\\-_]{80,}['\"]", "", t, flags=re.IGNORECASE)
-    t = re.sub(r"[ \t]{2,}", " ", t).strip()
-    return t
+_strip_forbidden_tech = strip_forbidden_tech
 
 
 def _llm_content_to_text(content) -> str:
@@ -1355,7 +1285,7 @@ def _classify_intent_llm(text: str) -> Optional[Intent]:
 
 def classify_intent(state: State) -> State:
     text = _last_user_text(state)
-    use_llm = os.getenv("USE_INTENT_LLM", "true").strip().lower() in {"1", "true", "yes", "on"}
+    use_llm = env_flag("USE_INTENT_LLM", True)
     intent: Optional[Intent] = None
     if use_llm:
         intent = _classify_intent_llm(text)
@@ -1368,24 +1298,8 @@ def classify_intent(state: State) -> State:
     return state
 
 
-def _contains_forbidden_medical(text: str) -> bool:
-    t = (text or "").replace("呼吸与危重症医学科", "").replace("危重症医学科", "")
-    if re.search(r"(诊断|考虑为|怀疑|可能是|高度怀疑|确诊|你这是|属于|病因|并发症)", t):
-        return True
-    if re.search(r"(用药|吃药|药物|剂量|口服|注射|输液|激素|抗生素|抗病毒|镇痛|手术|穿刺|治疗|处方)", t):
-        return True
-    if re.search(r"(严重|极高危|致命|凶险|必须立即|随时可能|黄金期|危重)", t):
-        return True
-    return False
-
-
-def _compliant_replacement(department: Optional[str]) -> str:
-    dep = department or "相关专科门诊"
-    return (
-        "我可以协助你完成导诊（科室推荐、院内指引与挂号/号源查询）。\n"
-        "但我不能进行疾病诊断或提供用药/治疗建议。\n"
-        f"建议你前往 **{dep}** 由线下医生进一步评估。"
-    )
+_contains_forbidden_medical = contains_forbidden_medical
+_compliant_replacement = compliant_replacement
 
 
 def _finalize(state: State, draft: str) -> State:
