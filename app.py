@@ -68,6 +68,38 @@ def _debug_summary(state: dict) -> dict:
     }
 
 
+def _last_ai_text(state: dict) -> str:
+    for msg in reversed(state.get("messages") or []):
+        if getattr(msg, "type", "") == "ai":
+            return str(getattr(msg, "content", "") or "")
+    return "（没有生成回复）"
+
+
+def _seed_demo_conversation() -> None:
+    demo = st.query_params.get("demo")
+    if demo != "clarification" or st.session_state.get("demo_seeded") == demo:
+        return
+    st.session_state.chat_history = []
+    st.session_state.thread_id = str(uuid.uuid4())
+    prompts = [
+        "我25岁 女，头疼挂什么科？",
+        "不是突然的，没有呕吐，没有发热，也没有肢体无力。",
+    ]
+    last_state = {}
+    for prompt in prompts:
+        st.session_state.chat_history.append({"role": "user", "content": prompt})
+        last_state = GRAPH.invoke(
+            {"messages": [("human", prompt)]},
+            config={"configurable": {"thread_id": st.session_state.thread_id}},
+        )
+        st.session_state.chat_history.append({"role": "assistant", "content": _last_ai_text(last_state)})
+    st.session_state.last_debug_summary = _debug_summary(last_state)
+    st.session_state.demo_seeded = demo
+
+
+_seed_demo_conversation()
+
+
 with st.sidebar:
     st.subheader("项目说明")
     st.markdown(
@@ -90,6 +122,7 @@ with st.sidebar:
     st.divider()
     with st.expander("示例场景", expanded=False):
         st.markdown(
+            "- 有限多轮澄清：宽泛症状先追问，再进入科室推荐。\n"
             "- 普通科室推荐：年龄、性别、症状槽位抽取。\n"
             "- 院内位置查询：从位置知识库返回楼层和路线。\n"
             "- 多轮号源查询：推荐科室后继续查询排班。\n"

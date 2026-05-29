@@ -41,7 +41,7 @@
 
 截图：
 
-![普通科室推荐](assets/streamlit-demo-triage.png)
+![有限多轮澄清导诊](assets/streamlit-demo-clarification.png)
 
 展示点：
 

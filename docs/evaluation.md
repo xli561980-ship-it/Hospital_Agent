@@ -7,6 +7,8 @@
 - `--no-llm-run`：关闭图中的 LLM 路径，使用本地规则、TF-IDF 和相似度匹配评测结构化结果。
 - 默认模式：走真实 LLM 混合链路，用于验证意图识别、槽位抽取和候选规则裁决。
 
+`--no-llm-run` 只能作为 deterministic fallback regression，用于快速验证状态机、规则回退和工具链路；它不能代表完整 LLM Agent 能力。LLM 意图识别、槽位抽取、候选内语义裁决、Triage Interview Planning 和最终回复仍需要 LLM-assisted evaluation 单独覆盖。
+
 常用参数：
 
 | 参数 | 说明 |
@@ -17,6 +19,39 @@
 | `--judge-llm` | 使用 LLM-as-a-Judge 判断科室等价性 |
 | `--limit` | 限制评测样本数量 |
 | `--no-color` | 关闭终端颜色输出 |
+
+## Evaluation Layers
+
+本项目不是开放域 RAG 问答系统，而是受控状态机 + 结构化工具调用 + 候选规则裁决。因此评测体系分为五层：
+
+| 层级 | 目标 | 指标 | 当前实现 |
+|---|---|---|---|
+| Workflow Regression | 验证状态机、工具调用和业务路由是否稳定 | intent accuracy, department accuracy, location accuracy, emergency routing recall, clarification trigger accuracy | `evaluate_agent.py` 已覆盖意图、科室、位置和急诊入口；clarification trigger accuracy 仍以人工多轮用例和后续数据集扩展为主 |
+| Retrieval Evaluation | 验证分诊规则和位置知识库召回质量 | rule recall@k, rule MRR, location recall@k, location MRR, retrieval precision@k | `evaluate_retrieval.py` 提供 lightweight retrieval evaluation，不依赖外部 RAGAS 包 |
+| LLM-assisted Evaluation | 验证 LLM 意图识别、槽位抽取、候选规则内语义裁决、Triage Interview Planning 和最终回复生成 | slot extraction F1, candidate selection accuracy, grounded answer rate, response consistency | 可通过默认 LLM 模式、`--judge-llm` 和人工抽检扩展 |
+| Safety Evaluation | 验证医疗安全边界 | unsafe refusal rate, diagnosis refusal rate, medication refusal rate, emergency routing recall, unsafe advice rate | 当前由安全边界样本、急诊入口样本和最终回复后处理检查覆盖，仍需要专门安全集扩展 |
+| Multi-turn Evaluation | 验证有限多轮澄清和状态合并 | clarification trigger accuracy, follow-up resolution rate, red-flag escalation accuracy, no-infinite-clarification rate, schedule continuity accuracy | 当前以人工多轮用例和 smoke test 为主，后续可扩展成结构化多轮数据集 |
+
+这些层级可以组合使用：例如一次导诊失败可能来自候选规则未召回、LLM 候选内裁决错误、澄清触发过早/过晚，或安全后处理不当。复盘时应先定位层级，再修改规则、状态机、提示词或数据集。
+
+## RAGAS-style Grounding Evaluation
+
+RAGAS 或类似指标可以作为 optional / planned 评测能力，用于衡量 knowledge-grounded responses：
+
+- retrieved context 是否相关：例如 context precision。
+- 应召回的规则或位置是否进入上下文：例如 context recall。
+- final response 是否 faithful to context：不编造未在上下文出现的科室、位置、医生或号源。
+- answer 是否 relevant：回复是否直接回答用户导诊、位置或号源问题。
+
+但 RAGAS-style metrics 不能替代本项目的业务评测。以下风险不是 RAGAS 默认指标，需要自定义：
+
+- 医疗安全边界：是否拒绝诊断、治疗、用药建议。
+- 急诊漏分流：该走急诊入口的样本是否被普通门诊化。
+- 澄清触发：宽泛症状是否先追问、明确红旗是否直接升级入口。
+- 状态连续性：用户回答 follow-up 后是否合并原始症状，推荐后问号源是否沿用上一轮 department。
+- 无无限追问：有限多轮澄清是否在 1-2 轮内放行到推荐或急诊入口。
+
+因此文档中不要把当前实现描述为“已全面支持 RAGAS”或“完整医疗评估体系”。当前状态更准确地说是：已有 workflow regression 和 lightweight retrieval evaluation；RAGAS-style grounding metrics 可以后续加入；custom safety and multi-turn metrics 是医疗导诊场景必需的扩展。
 
 ## 数据集说明
 
@@ -74,6 +109,13 @@ python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile 
 python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile --judge-llm --no-color
 ```
 
+轻量 retrieval 评测：
+
+```bash
+python evaluate_retrieval.py --dataset eval_dataset.json --include-profile --no-color
+python evaluate_retrieval.py --dataset eval_dataset_200_each.json --include-profile --no-color
+```
+
 ## 如何解读失败样本
 
 失败样本应按以下顺序复盘：
@@ -115,8 +157,23 @@ Case 2：
 Case 3：
 
 ```text
+用户：头疼挂什么科？
+预期：缺年龄/性别或关键症状信息时追问，不直接推荐。
+```
+
+Case 4：
+
+```text
 用户：抽血在几楼？
 预期：不进入导诊澄清，直接做位置检索并返回采血相关地点。
+```
+
+Case 5：
+
+```text
+前置：系统已推荐神经内科。
+用户：那什么时候有号？
+预期：沿用上一轮 department 查询排班。
 ```
 
 当宽泛症状从“单轮直接推荐”调整为“先澄清再推荐”后，旧评测集中类似单轮样本如果失败，应优先更新标注口径：区分“可直接推荐”和“需澄清”。

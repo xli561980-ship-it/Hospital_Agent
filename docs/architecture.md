@@ -29,9 +29,12 @@ flowchart TB
         ROUTE{"action 条件路由"}
         subgraph TRIAGE_MODULE["extract_triage：Triage Engine"]
             TRIAGE["Rule Retrieval<br/>分诊规则召回"]
+            CLARIFY{"Clarification Gate<br/>缺槽位 / 宽泛症状 / 红旗放行"}
             INTERVIEW["Triage Interview Planning<br/>有限多轮澄清 / 追问规划"]
             SELECT["Semantic Selection<br/>候选规则内语义裁决"]
-            TRIAGE --> INTERVIEW --> SELECT
+            TRIAGE --> CLARIFY
+            CLARIFY -->|"需要追问"| INTERVIEW
+            CLARIFY -->|"信息足够"| SELECT
         end
         LOCATION["extract_location<br/>院内位置检索"]
         SCHEDULE["extract_schedule<br/>排班 / 号源查询"]
@@ -40,6 +43,7 @@ flowchart TB
 
         START --> INTENT --> TRANSITION --> ROUTE
         ROUTE -->|"TRIAGE"| TRIAGE
+        INTERVIEW --> RESP
         SELECT --> RESP
         ROUTE -->|"LOCATION"| LOCATION --> RESP
         ROUTE -->|"SCHEDULE"| SCHEDULE --> RESP
