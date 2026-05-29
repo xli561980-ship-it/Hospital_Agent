@@ -141,6 +141,47 @@ python evaluate_safety.py --dataset eval_safety_cases.json --no-color
 
 `evaluate_safety.py` 用来验证“不诊断、不治疗、不用药、不判断严重程度”和红旗入口提示。脚本检查最终回复是否包含拒答标记、是否命中急诊入口、是否出现诊断断言、药物建议、治疗建议、严重程度判断或数据集中列出的禁用短语。
 
+## 最新运行结果（2026-05-29）
+
+本次运行在项目虚拟环境中执行，等价于先运行 `source .venv/bin/activate` 再执行下列 `python ...` 命令。未激活 `.venv` 的系统 `python` 缺少 `langchain_core`，直接运行 `evaluate_agent.py` / `evaluate_retrieval.py` / `evaluate_multiturn.py` / `evaluate_safety.py` 会失败。LLM-assisted 结果使用 `LLM_PROVIDER=gemini`、`GEMINI_MODEL=gemini-3-flash-preview`。
+
+### Workflow Regression
+
+| 命令 | 数据集 | 样本数 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急诊入口成功率 | 失败样本 |
+|---|---|---:|---:|---:|---:|---:|---|
+| `python evaluate_agent.py --dataset eval_dataset.json --no-llm-run --include-profile --no-color` | `eval_dataset.json` | 50 | 100.00% (50/50) | 100.00% (35/35) | 100.00% (10/10) | 100.00% (11/11) | 无 |
+| `python evaluate_agent.py --dataset eval_dataset_200_each.json --no-llm-run --include-profile --no-color` | `eval_dataset_200_each.json` | 800 | 100.00% (800/800) | 100.00% (400/400) | 100.00% (200/200) | 100.00% (200/200) | 无 |
+
+### LLM-assisted Smoke Test
+
+| 命令 | 数据集 | 模型 | 样本数 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急诊入口成功率 | 失败样本说明 |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| `python evaluate_agent.py --dataset eval_dataset.json --include-profile --no-color` | `eval_dataset.json` | `gemini-3-flash-preview` | 50 | 100.00% (50/50) | 100.00% (35/35) | 100.00% (10/10) | 100.00% (11/11) | 无 |
+| `python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile --limit 100 --no-color` | `eval_dataset_200_each.json` | `gemini-3-flash-preview` | 100 | 100.00% (100/100) | 0.00% (0/0) | 100.00% (100/100) | 0.00% (0/0) | 无；前 100 条为位置类切片，科室/急诊分母为 0 |
+
+LLM-assisted 结果是 smoke test，受模型、prompt、API 稳定性和运行日期影响，不代表生产泛化能力。
+
+### Retrieval Evaluation
+
+| 命令 | 数据集 | rule_recall@1 | rule_recall@3 | rule_mrr | rule_precision@3 | location_recall@1 | location_recall@3 | location_mrr | location_precision@3 | 失败样本说明 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| `python evaluate_retrieval.py --dataset eval_dataset.json --include-profile --no-color` | `eval_dataset.json` | 100.00% (35/35) | 100.00% (35/35) | 1.0000 | 0.3524 | 100.00% (10/10) | 100.00% (10/10) | 1.0000 | 0.3333 | 无 |
+| `python evaluate_retrieval.py --dataset eval_dataset_200_each.json --include-profile --no-color` | `eval_dataset_200_each.json` | 100.00% (400/400) | 100.00% (400/400) | 1.0000 | 0.3650 | 97.50% (195/200) | 100.00% (200/200) | 0.9875 | 0.3333 | 位置 top-1 有 5 条未排第一，top-3 全召回 |
+
+### Multi-turn Evaluation
+
+| 命令 | 数据集 | case_pass_rate | turn_pass_rate | clarification_trigger_accuracy | followup_resolution_accuracy | red_flag_escalation_accuracy | schedule_continuity_accuracy | no_infinite_clarification_rate | 失败样本 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `python evaluate_multiturn.py --dataset eval_multiturn_cases.json --no-color` | `eval_multiturn_cases.json` | 100.00% (5/5) | 100.00% (9/9) | 100.00% (9/9) | 100.00% (3/3) | 100.00% (1/1) | 100.00% (1/1) | 100.00% (5/5) | 无 |
+
+### Safety Evaluation
+
+| 命令 | 数据集 | pass_rate | diagnosis_refusal_rate | medication_refusal_rate | treatment_refusal_rate | severity_refusal_rate | emergency_escalation_recall | unsafe_advice_rate | 失败样本 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `python evaluate_safety.py --dataset eval_safety_cases.json --no-color` | `eval_safety_cases.json` | 100.00% (11/11) | 100.00% (3/3) | 100.00% (3/3) | 100.00% (1/1) | 100.00% (1/1) | 100.00% (3/3) | 0.00% (0/11) | 无 |
+
+`unsafe_advice_rate` 越低越好。
+
 ## 如何解读失败样本
 
 失败样本应按以下顺序复盘：

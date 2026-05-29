@@ -405,20 +405,22 @@ Optional / planned：
 Workflow regression 常用命令：
 
 ```bash
+python evaluate_agent.py --dataset eval_dataset.json --no-llm-run --include-profile --no-color
 python evaluate_agent.py --dataset eval_dataset_200_each.json --no-llm-run --include-profile --no-color
-python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile --no-color
 ```
 
-快速回归命令：
+LLM-assisted smoke test 命令：
 
 ```bash
-python evaluate_agent.py --dataset eval_dataset.json --no-llm-run --include-profile --no-color
+python evaluate_agent.py --dataset eval_dataset.json --include-profile --no-color
+python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile --limit 100 --no-color
 ```
 
 Retrieval evaluation 轻量命令：
 
 ```bash
 python evaluate_retrieval.py --dataset eval_dataset.json --include-profile --no-color
+python evaluate_retrieval.py --dataset eval_dataset_200_each.json --include-profile --no-color
 ```
 
 Multi-turn evaluation 命令：
@@ -433,12 +435,44 @@ Safety evaluation 命令：
 python evaluate_safety.py --dataset eval_safety_cases.json --no-color
 ```
 
-Evaluation Baseline 是当前 Mock 数据集和本地回退链路下的回归测试基线，用于防止规则库、状态机、工具调用和安全边界在代码变更后退化。它不代表真实医院生产环境的泛化能力，也不代表接入真实 HIS、预约挂号或院内地图后的线上效果。
+以下结果分为 deterministic fallback regression、LLM-assisted smoke test、retrieval evaluation、multi-turn evaluation 和 safety evaluation。`--no-llm-run` 仅代表本地回退链路，不代表完整 LLM Agent 能力；LLM-assisted 结果受模型、prompt、API 稳定性和运行日期影响，应作为 smoke test，而不是生产泛化能力证明。
 
-| 数据集 | 模式 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急症拦截成功率 | 说明 |
-|---|---|---:|---:|---:|---:|---|
-| `eval_dataset_200_each.json` | `--no-llm-run --include-profile` | 100.00% (800/800) | 100.00% (400/400) | 100.00% (200/200) | 100.00% (200/200) | 本地规则回退链路，2026-05-29 运行 |
-| `eval_dataset.json` | `--no-llm-run --include-profile` | 100.00% (50/50) | 100.00% (35/35) | 100.00% (10/10) | 100.00% (11/11) | 快速回归，2026-05-29 运行 |
+本次结果运行于 2026-05-29。当前 shell 未激活 `.venv` 时，系统 `python` 缺少 `langchain_core` 会失败；下列结果使用项目虚拟环境运行，等价于先执行 `source .venv/bin/activate` 后再运行表中命令。
+
+### Deterministic Fallback Regression
+
+| 数据集 | 模式 | 样本数 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急诊入口成功率 | 说明 |
+|---|---|---:|---:|---:|---:|---:|---|
+| `eval_dataset.json` | `--no-llm-run --include-profile` | 50 | 100.00% (50/50) | 100.00% (35/35) | 100.00% (10/10) | 100.00% (11/11) | 本地规则回退链路，失败用例 0 |
+| `eval_dataset_200_each.json` | `--no-llm-run --include-profile` | 800 | 100.00% (800/800) | 100.00% (400/400) | 100.00% (200/200) | 100.00% (200/200) | 本地规则回退链路，失败用例 0 |
+
+### LLM-assisted Smoke Test
+
+| 数据集 | 模式 | 样本数 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急诊入口成功率 | 说明 |
+|---|---|---:|---:|---:|---:|---:|---|
+| `eval_dataset.json` | `--include-profile` | 50 | 100.00% (50/50) | 100.00% (35/35) | 100.00% (10/10) | 100.00% (11/11) | Gemini 主链路，`GEMINI_MODEL=gemini-3-flash-preview`，2026-05-29，失败用例 0 |
+| `eval_dataset_200_each.json` | `--include-profile --limit 100` | 100 | 100.00% (100/100) | 0.00% (0/0) | 100.00% (100/100) | 0.00% (0/0) | Gemini 主链路，`GEMINI_MODEL=gemini-3-flash-preview`，前 100 条为位置类切片，科室/急诊分母为 0 |
+
+### Retrieval Evaluation Baseline
+
+| 数据集 | rule_recall@1 | rule_recall@3 | rule_mrr | rule_precision@3 | location_recall@1 | location_recall@3 | location_mrr | location_precision@3 | 说明 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| `eval_dataset.json` | 100.00% (35/35) | 100.00% (35/35) | 1.0000 | 0.3524 | 100.00% (10/10) | 100.00% (10/10) | 1.0000 | 0.3333 | lightweight retrieval，失败用例 0 |
+| `eval_dataset_200_each.json` | 100.00% (400/400) | 100.00% (400/400) | 1.0000 | 0.3650 | 97.50% (195/200) | 100.00% (200/200) | 0.9875 | 0.3333 | 位置 top-1 有 5 条未排第一，但 top-3 全召回 |
+
+### Multi-turn Evaluation Baseline
+
+| 数据集 | case_pass_rate | turn_pass_rate | clarification_trigger_accuracy | followup_resolution_accuracy | red_flag_escalation_accuracy | schedule_continuity_accuracy | no_infinite_clarification_rate | 说明 |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `eval_multiturn_cases.json` | 100.00% (5/5) | 100.00% (9/9) | 100.00% (9/9) | 100.00% (3/3) | 100.00% (1/1) | 100.00% (1/1) | 100.00% (5/5) | 覆盖头疼先澄清、胸闷红旗升级、推荐后查号源、位置不误入导诊、安全边界拒答 |
+
+### Safety Evaluation Baseline
+
+| 数据集 | pass_rate | diagnosis_refusal_rate | medication_refusal_rate | treatment_refusal_rate | severity_refusal_rate | emergency_escalation_recall | unsafe_advice_rate | 说明 |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `eval_safety_cases.json` | 100.00% (11/11) | 100.00% (3/3) | 100.00% (3/3) | 100.00% (1/1) | 100.00% (1/1) | 100.00% (3/3) | 0.00% (0/11) | 禁用短语违规 0，失败用例 0 |
+
+`unsafe_advice_rate` 越低越好。上述 Evaluation Baseline 是当前 Mock 数据集和本地 / LLM smoke test 链路下的回归基线，用于防止规则库、状态机、工具调用和安全边界在代码变更后退化；它不代表真实医院生产环境的泛化能力，也不代表接入真实 HIS、预约挂号或院内地图后的线上效果。
 
 评测细节见 [docs/evaluation.md](docs/evaluation.md)。
 
