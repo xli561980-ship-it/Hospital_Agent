@@ -5,6 +5,7 @@
 ```text
 docs/assets/streamlit-demo-initial.png
 docs/assets/streamlit-demo.png
+docs/assets/streamlit-demo-llm.png
 docs/assets/streamlit-demo-triage.png
 docs/assets/streamlit-demo-location.png
 docs/assets/streamlit-demo-schedule.png

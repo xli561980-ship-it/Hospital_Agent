@@ -176,7 +176,7 @@ def _get_llm():
             raise RuntimeError("GOOGLE_API_KEY is not set")
         return ChatGoogleGenerativeAI(
             model=settings.gemini_model,
-            temperature=0.2,
+            temperature=0.0,
             google_api_key=settings.google_api_key,
             request_timeout=settings.timeout_seconds,
             retries=0,
@@ -188,7 +188,7 @@ def _get_llm():
         raise RuntimeError("OPENAI_API_KEY is not set")
     return ChatOpenAI(
         model=settings.openai_model,
-        temperature=0.2,
+        temperature=0.0,
         api_key=settings.openai_api_key,
         timeout=settings.timeout_seconds,
         max_retries=0,
@@ -242,6 +242,10 @@ def _normalize_pregnancy_status(p: str) -> str:
     return "any"
 
 
+def _mentions_postpartum(text: str) -> bool:
+    return bool(re.search(r"(产后|刚生完|刚生产|分娩后|生完孩子|坐月子)", text or ""))
+
+
 def _infer_pediatric_age(text: str) -> Optional[int]:
     t = text or ""
     if re.search(r"(新生儿|刚出生|出生后|生后|满月内)", t):
@@ -279,7 +283,7 @@ def _parse_age_gender_symptom(text: str) -> tuple[Optional[int], Optional[str], 
 
     gender = _infer_gender(text)
 
-    if re.search(r"(未孕|未怀孕|没怀孕|没有怀孕|非孕期)", text):
+    if _mentions_postpartum(text) or re.search(r"(未孕|未怀孕|没怀孕|没有怀孕|非孕期)", text):
         pregnancy_status = "no"
     elif re.search(r"(怀孕|孕期|妊娠|孕\d+\s*周|孕\d+\s*月)", text):
         pregnancy_status = "yes"
@@ -1204,6 +1208,7 @@ SLOT_LLM_SYSTEM = (
     "输出且仅输出 JSON：{\"age\": int|null, \"gender\": \"male\"|\"female\"|null, "
     "\"pregnancy_status\": \"yes\"|\"no\"|\"any\"|null, \"symptom\": string|null}\n"
     "规则：新生儿/刚出生/出生后/生后可记为 age=0；婴儿/宝宝可按 age=1；"
+    "产后/刚生完孩子/分娩后不等于怀孕，pregnancy_status 记为 no，且 symptom 中保留产后相关描述；"
     "如果用户没有明确给出字段则填 null；symptom 保留主要不适描述，去掉挂号/导诊客套话。"
 )
 
@@ -1370,7 +1375,11 @@ def ingest_and_transition(state: State) -> State:
     age = llm_age if llm_age is not None else rule_age
     gender = llm_gender if llm_gender is not None else rule_gender
     pregnancy_status = llm_pregnancy_status if llm_pregnancy_status is not None else rule_pregnancy_status
+    if _mentions_postpartum(text):
+        pregnancy_status = "no"
     symptom = llm_symptom if llm_symptom is not None else rule_symptom
+    if _mentions_postpartum(text) and rule_symptom and (not symptom or not _mentions_postpartum(symptom)):
+        symptom = rule_symptom
     state["slot_extract_source"] = "llm_with_rule_fallback" if any(
         x is not None for x in (llm_age, llm_gender, llm_pregnancy_status, llm_symptom)
     ) else "rule"
@@ -1480,15 +1489,33 @@ def extract_triage(state: State) -> State:
     confidence = 0.0
     matched_symptoms: list[str] = []
 
-    interview_plan = _triage_interview_llm(state)
-    if interview_plan is not None:
+    semantic_match = _triage_match_llm(
+        age=age,
+        gender=gender,
+        pregnancy_status=pregnancy_status,
+        symptom=symptom,
+    )
+    if semantic_match is not None:
+        state["matched_rule_id"] = semantic_match.get("rule_id")
+        state["triage_match_source"] = semantic_match.get("source")
+        state["triage_llm_reason"] = semantic_match.get("reason")
+        state["triage_candidate_rules"] = semantic_match.get("candidate_rules", [])
+        if semantic_match.get("department"):
+            dep = semantic_match.get("department")
+            advice = semantic_match.get("triage_advice")
+            is_emergency = bool(semantic_match.get("is_emergency"))
+            confidence = _safe_float(semantic_match.get("confidence"), 0.0)
+            matched_symptoms = _ensure_str_list(semantic_match.get("matched_symptoms"))
+
+    interview_plan = None if dep else _triage_interview_llm(state)
+    if not dep and interview_plan is not None:
         interview_match = _apply_triage_interview_plan(state, interview_plan)
-        state["matched_rule_id"] = None
+        state["matched_rule_id"] = state.get("matched_rule_id")
         state["triage_match_source"] = "llm_interview"
         state["triage_llm_reason"] = state.get("triage_interview_reason")
         if interview_match is not None:
             dep, advice, is_emergency, confidence, matched_symptoms = interview_match
-    else:
+    elif not dep:
         dep, advice, is_emergency, confidence, matched_symptoms = _triage_match(
             age=age,
             gender=gender,

@@ -42,9 +42,9 @@ def load_agent_now() -> datetime:
 
 def load_llm_settings() -> LLMSettings:
     try:
-        timeout = float(os.getenv("LLM_TIMEOUT_SECONDS", "8"))
+        timeout = float(os.getenv("LLM_TIMEOUT_SECONDS", "20"))
     except Exception:
-        timeout = 8.0
+        timeout = 20.0
     return LLMSettings(
         provider=os.getenv("LLM_PROVIDER", "gemini").strip().lower(),
         timeout_seconds=timeout,
@@ -53,4 +53,3 @@ def load_llm_settings() -> LLMSettings:
         google_api_key=os.getenv("GOOGLE_API_KEY", "").strip(),
         gemini_model=os.getenv("GEMINI_MODEL", "gemini-1.5-flash").strip(),
     )
-
