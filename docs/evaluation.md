@@ -90,10 +90,11 @@ python evaluate_agent.py --dataset eval_dataset_200_each.json --include-profile 
 
 ## 结果记录模板
 
+评测结果应被理解为当前 Mock 数据集和本地回退链路下的回归测试基线，主要用于防止规则库、状态机、工具调用和安全边界在代码变更后退化。它不代表真实医院生产环境的泛化能力，也不能替代接入真实科室知识库、排班系统和院内地图后的验收评测。
+
 不要手工编造结果。每次执行评测后，可将终端输出中的指标填写到下表：
 
 | 日期 | 数据集 | 模式 | 意图识别准确率 | 科室推荐准确率 | 位置检索准确率 | 急症拦截成功率 | 备注 |
 |---|---|---|---:|---:|---:|---:|---|
 | YYYY-MM-DD | `eval_dataset.json` | `--no-llm-run --include-profile` |  |  |  |  |  |
 | YYYY-MM-DD | `eval_dataset_200_each.json` | `--no-llm-run --include-profile` |  |  |  |  |  |
-
