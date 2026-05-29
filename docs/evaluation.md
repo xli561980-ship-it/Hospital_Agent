@@ -2,7 +2,14 @@
 
 ## 当前评测脚本
 
-评测入口为根目录 `evaluate_agent.py`。脚本支持两种主要模式：
+当前仓库包含四个可运行评测入口：
+
+- `evaluate_agent.py`：workflow regression，验证状态机、工具调用和业务路由。
+- `evaluate_retrieval.py`：lightweight retrieval evaluation，验证分诊规则和位置知识库召回。
+- `evaluate_multiturn.py`：multi-turn state and clarification evaluation，验证有限多轮澄清、状态合并和号源连续性。
+- `evaluate_safety.py`：medical safety boundary evaluation，验证不诊断、不治疗、不用药、不判断严重程度和红旗入口提示。
+
+`evaluate_agent.py` 支持两种主要模式：
 
 - `--no-llm-run`：关闭图中的 LLM 路径，使用本地规则、TF-IDF 和相似度匹配评测结构化结果。
 - 默认模式：走真实 LLM 混合链路，用于验证意图识别、槽位抽取和候选规则裁决。
@@ -26,11 +33,11 @@
 
 | 层级 | 目标 | 指标 | 当前实现 |
 |---|---|---|---|
-| Workflow Regression | 验证状态机、工具调用和业务路由是否稳定 | intent accuracy, department accuracy, location accuracy, emergency routing recall, clarification trigger accuracy | `evaluate_agent.py` 已覆盖意图、科室、位置和急诊入口；clarification trigger accuracy 仍以人工多轮用例和后续数据集扩展为主 |
+| Workflow Regression | 验证状态机、工具调用和业务路由是否稳定 | intent accuracy, department accuracy, location accuracy, emergency routing recall, clarification trigger accuracy | `evaluate_agent.py` 覆盖意图、科室、位置、急诊入口和业务路由 |
 | Retrieval Evaluation | 验证分诊规则和位置知识库召回质量 | rule recall@k, rule MRR, location recall@k, location MRR, retrieval precision@k | `evaluate_retrieval.py` 提供 lightweight retrieval evaluation，不依赖外部 RAGAS 包 |
 | LLM-assisted Evaluation | 验证 LLM 意图识别、槽位抽取、候选规则内语义裁决、Triage Interview Planning 和最终回复生成 | slot extraction F1, candidate selection accuracy, grounded answer rate, response consistency | 可通过默认 LLM 模式、`--judge-llm` 和人工抽检扩展 |
-| Safety Evaluation | 验证医疗安全边界 | unsafe refusal rate, diagnosis refusal rate, medication refusal rate, emergency routing recall, unsafe advice rate | 当前由安全边界样本、急诊入口样本和最终回复后处理检查覆盖，仍需要专门安全集扩展 |
-| Multi-turn Evaluation | 验证有限多轮澄清和状态合并 | clarification trigger accuracy, follow-up resolution rate, red-flag escalation accuracy, no-infinite-clarification rate, schedule continuity accuracy | 当前以人工多轮用例和 smoke test 为主，后续可扩展成结构化多轮数据集 |
+| Safety Evaluation | 验证医疗安全边界 | unsafe refusal rate, diagnosis refusal rate, medication refusal rate, emergency routing recall, unsafe advice rate | `evaluate_safety.py` 使用 `eval_safety_cases.json` 做可运行安全边界回归 |
+| Multi-turn Evaluation | 验证有限多轮澄清和状态合并 | clarification trigger accuracy, follow-up resolution rate, red-flag escalation accuracy, no-infinite-clarification rate, schedule continuity accuracy | `evaluate_multiturn.py` 使用 `eval_multiturn_cases.json` 做可运行多轮状态回归 |
 
 这些层级可以组合使用：例如一次导诊失败可能来自候选规则未召回、LLM 候选内裁决错误、澄清触发过早/过晚，或安全后处理不当。复盘时应先定位层级，再修改规则、状态机、提示词或数据集。
 
@@ -51,7 +58,7 @@ RAGAS 或类似指标可以作为 optional / planned 评测能力，用于衡量
 - 状态连续性：用户回答 follow-up 后是否合并原始症状，推荐后问号源是否沿用上一轮 department。
 - 无无限追问：有限多轮澄清是否在 1-2 轮内放行到推荐或急诊入口。
 
-因此文档中不要把当前实现描述为“已全面支持 RAGAS”或“完整医疗评估体系”。当前状态更准确地说是：已有 workflow regression 和 lightweight retrieval evaluation；RAGAS-style grounding metrics 可以后续加入；custom safety and multi-turn metrics 是医疗导诊场景必需的扩展。
+因此文档中不要把当前实现描述为“已全面支持 RAGAS”或“完整医疗评估体系”。当前状态更准确地说是：已有 workflow regression、lightweight retrieval evaluation、multi-turn evaluation 和 safety evaluation；RAGAS-style grounding metrics 仍是 optional / planned；医疗安全、急诊漏分流、澄清触发和状态连续性需要继续用项目自定义指标维护。
 
 ## 数据集说明
 
@@ -62,6 +69,8 @@ RAGAS 或类似指标可以作为 optional / planned 评测能力，用于衡量
 - `eval_dataset_blind.json`：更偏泛化的盲测样本。
 - `eval_dataset_blind_indomain.json`：知识库内盲测样本。
 - `eval_dataset_200_each.json`：较完整的回归集合，覆盖位置、非急诊入口导诊、急诊入口提示和其他问题。
+- `eval_multiturn_cases.json`：多轮结构化样本，覆盖宽泛症状澄清、follow-up 合并、急诊红旗升级、推荐后查号源和位置查询不误入导诊。
+- `eval_safety_cases.json`：安全边界结构化样本，覆盖诊断拒答、用药拒答、治疗拒答、严重程度拒答、急诊入口提示和禁用短语检查。
 
 每条样本通常包含：
 
@@ -116,6 +125,22 @@ python evaluate_retrieval.py --dataset eval_dataset.json --include-profile --no-
 python evaluate_retrieval.py --dataset eval_dataset_200_each.json --include-profile --no-color
 ```
 
+多轮状态与澄清评测：
+
+```bash
+python evaluate_multiturn.py --dataset eval_multiturn_cases.json --no-color
+```
+
+`evaluate_multiturn.py` 用来验证“头疼先澄清、回答后推荐、推荐后查号源、位置查询不误入导诊”。脚本逐轮调用 LangGraph，同一 case 使用同一个 thread_id，不同 case 使用独立 thread_id，检查 `intent`、`current_phase`、`triage_match_source`、`department`、`is_emergency`、回复文本、positive/negative findings 和是否出现无限追问。
+
+医疗安全边界评测：
+
+```bash
+python evaluate_safety.py --dataset eval_safety_cases.json --no-color
+```
+
+`evaluate_safety.py` 用来验证“不诊断、不治疗、不用药、不判断严重程度”和红旗入口提示。脚本检查最终回复是否包含拒答标记、是否命中急诊入口、是否出现诊断断言、药物建议、治疗建议、严重程度判断或数据集中列出的禁用短语。
+
 ## 如何解读失败样本
 
 失败样本应按以下顺序复盘：
@@ -132,7 +157,7 @@ python evaluate_retrieval.py --dataset eval_dataset_200_each.json --include-prof
 
 ## 人工多轮澄清用例
 
-以下用例用于补充单轮离线评测，重点验证“信息不足时先追问”和多轮 State 合并。
+以下用例已结构化写入 `eval_multiturn_cases.json`，可通过 `evaluate_multiturn.py` 运行，重点验证“信息不足时先追问”和多轮 State 合并。
 
 Case 1：
 

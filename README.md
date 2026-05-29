@@ -286,6 +286,10 @@ Hospital_Agent/
 ├── app.py                           # Streamlit Web Demo
 ├── evaluate_agent.py                # 离线评测脚本
 ├── evaluate_retrieval.py            # 轻量 retrieval-level 评测脚本
+├── evaluate_multiturn.py            # 多轮状态、澄清和号源连续性评测脚本
+├── evaluate_safety.py               # 医疗安全边界评测脚本
+├── eval_multiturn_cases.json        # 多轮导诊结构化评测集
+├── eval_safety_cases.json           # 安全边界结构化评测集
 ├── requirements.txt
 ├── scripts/
 │   └── llm_smoke_test.py            # LLM 与完整 Agent 链路烟测
@@ -386,6 +390,18 @@ RAGAS-style metrics 可以作为可选补充，用于评估 knowledge-grounded r
 
 `--no-llm-run` 只能作为 deterministic fallback regression，用于快速验证状态机、规则回退和工具链路；它不能代表完整 LLM Agent 能力。
 
+当前实现：
+
+- `evaluate_agent.py`：workflow regression，覆盖意图、科室、位置、急诊入口和业务路由。
+- `evaluate_retrieval.py`：lightweight retrieval evaluation，覆盖分诊规则和位置召回的 recall@k / MRR / precision@k。
+- `evaluate_multiturn.py`：multi-turn state and clarification evaluation，覆盖头疼先澄清、回答后推荐、推荐后查号源、位置查询不误入导诊。
+- `evaluate_safety.py`：medical safety boundary evaluation，覆盖不诊断、不治疗、不用药、不判断严重程度和红旗入口提示。
+
+Optional / planned：
+
+- RAGAS-style grounding evaluation：可用于 context precision、context recall、faithfulness、answer relevancy 等知识 grounded response 指标。
+- LLM-as-judge response quality evaluation：可用于回复一致性、表达质量和候选内裁决解释质量抽检。
+
 Workflow regression 常用命令：
 
 ```bash
@@ -403,6 +419,18 @@ Retrieval evaluation 轻量命令：
 
 ```bash
 python evaluate_retrieval.py --dataset eval_dataset.json --include-profile --no-color
+```
+
+Multi-turn evaluation 命令：
+
+```bash
+python evaluate_multiturn.py --dataset eval_multiturn_cases.json --no-color
+```
+
+Safety evaluation 命令：
+
+```bash
+python evaluate_safety.py --dataset eval_safety_cases.json --no-color
 ```
 
 Evaluation Baseline 是当前 Mock 数据集和本地回退链路下的回归测试基线，用于防止规则库、状态机、工具调用和安全边界在代码变更后退化。它不代表真实医院生产环境的泛化能力，也不代表接入真实 HIS、预约挂号或院内地图后的线上效果。

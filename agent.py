@@ -336,8 +336,9 @@ def _classify_intent_regex(text: str) -> Intent:
 
 def _asks_medical_judgment_or_advice(text: str) -> bool:
     t = text or ""
+    medication_names = r"(奥美拉唑|布洛芬|对乙酰氨基酚|阿司匹林|阿莫西林|头孢|抗生素|止痛药)"
     if re.search(r"(药房|取药|拿药|领药|发药|发放|窗口|几号窗口|在哪|哪里|怎么走|位置|几楼)", t) and re.search(
-        r"(药|药品|处方|红处方|毒麻|麻醉|止疼)", t
+        rf"(药|药品|处方|红处方|毒麻|麻醉|止疼|{medication_names})", t
     ):
         return False
     if re.search(r"(看哪个科|看什么科|挂哪个科|挂什么科|去哪个科|哪个科室|什么科室)", t) and not re.search(
@@ -346,6 +347,10 @@ def _asks_medical_judgment_or_advice(text: str) -> bool:
     ):
         return False
     if re.search(r"((吃|用|服|开|需要).{0,6}(药|药物|抗生素|止痛药|处方)|什么药|用药|药物|剂量|处方)", t):
+        return True
+    if re.search(rf"(能不能|能|可以|要不要|是否).{{0,4}}(吃|用|服用|口服).{{0,12}}{medication_names}", t):
+        return True
+    if re.search(rf"{medication_names}.{{0,12}}(能吃|能用|怎么吃|怎么用|剂量|饭前|饭后)", t):
         return True
     if re.search(r"(怎么治|如何治|治疗方案|治疗建议|需要手术|要不要手术|检查什么|做什么检查)", t):
         return True
@@ -692,12 +697,14 @@ def _is_generic_negative_followup(text: str) -> bool:
 
 def _term_negated(text: str, terms: list[str]) -> bool:
     t = text or ""
+    neg_prefix = r"(没有|没|无(?!力)|否认|不伴|未见|未出现|不是|并非|不(?!清))"
+    neg_suffix = r"(没有|没|无(?!力)|否认|不明显|未出现)"
     for term in terms:
         if not term:
             continue
-        if re.search(rf"(没有|没|无|否认|不伴|未见|未出现|不是|并非|不).{{0,12}}{re.escape(term)}", t):
+        if re.search(rf"{neg_prefix}.{{0,12}}{re.escape(term)}", t):
             return True
-        if re.search(rf"{re.escape(term)}.{{0,8}}(没有|没|无|否认|不明显|未出现)", t):
+        if re.search(rf"{re.escape(term)}.{{0,8}}{neg_suffix}", t):
             return True
     return False
 
@@ -768,6 +775,9 @@ def _has_clear_emergency_red_flags(text: str, ranked: list[dict] | None = None) 
     left_radiation = _term_affirmed(t, TRIAGE_FINDING_TERMS["放射至左肩左臂"])
     vomiting = _term_affirmed(t, TRIAGE_FINDING_TERMS["呕吐"]) or _term_affirmed(t, TRIAGE_FINDING_TERMS["喷射性呕吐"])
     fever = _term_affirmed(t, TRIAGE_FINDING_TERMS["发热"])
+    persistent_high_fever = _term_affirmed(t, TRIAGE_FINDING_TERMS["持续高热"])
+    rash = _term_affirmed(t, TRIAGE_FINDING_TERMS["皮疹"])
+    pediatric = _term_affirmed(t, TRIAGE_FINDING_TERMS["老人/儿童/孕期"]) or re.search(r"(儿童|小孩|孩子|患儿|婴儿|婴幼儿|宝宝)", t)
     neck_stiff = _term_affirmed(t, TRIAGE_FINDING_TERMS["颈部僵硬"])
     bleeding = _term_affirmed(t, TRIAGE_FINDING_TERMS["出血"])
 
@@ -784,6 +794,8 @@ def _has_clear_emergency_red_flags(text: str, ranked: list[dict] | None = None) 
     if bleeding and re.search(r"(大量|不止|大出血|血压骤降|面色苍白|黑便|便血|呕吐咖啡色)", t):
         return True
     if re.search(r"(转移性右下腹痛|右下腹痛)", t) and (fever or vomiting):
+        return True
+    if pediatric and persistent_high_fever and rash:
         return True
     if _term_affirmed(t, TRIAGE_FINDING_TERMS["外伤"]) and (
         consciousness or re.search(r"(关节畸形|骨擦音|反常活动|剧痛)", t)
@@ -1808,6 +1820,12 @@ def extract_triage(state: State) -> State:
         missing.append("性别")
     if not symptom:
         missing.append("主要症状")
+
+    emergency_bypass_ranked: list[dict] | None = None
+    if symptom and missing:
+        emergency_bypass_ranked = _rank_triage_candidates(age, gender, pregnancy_status, symptom, limit=8)
+        if _has_clear_emergency_red_flags(_combined_triage_text(state), emergency_bypass_ranked):
+            missing = []
     state["_missing_fields"] = missing
     if missing:
         state["current_phase"] = "TRIAGE"
@@ -1831,7 +1849,7 @@ def extract_triage(state: State) -> State:
     confidence = 0.0
     matched_symptoms: list[str] = []
 
-    ranked = _rank_triage_candidates(age, gender, pregnancy_status, symptom, limit=8)
+    ranked = emergency_bypass_ranked or _rank_triage_candidates(age, gender, pregnancy_status, symptom, limit=8)
     state["triage_candidate_rules"] = _triage_candidate_payload(ranked)
 
     need_clarify, clarify_reason, clarify_questions = _needs_triage_clarification(state, ranked)
