@@ -1,9 +1,14 @@
-# Demo 资产占位
+# Demo 资产
 
-当前仓库暂未提交 Streamlit 截图。后续如需在 README 中展示 Demo 预览，可将截图保存为：
+当前目录保存 Streamlit Demo 截图：
 
 ```text
+docs/assets/streamlit-demo-initial.png
 docs/assets/streamlit-demo.png
+docs/assets/streamlit-demo-triage.png
+docs/assets/streamlit-demo-location.png
+docs/assets/streamlit-demo-schedule.png
+docs/assets/streamlit-demo-safety.png
 ```
 
-在截图补充前，README 只保留文字占位说明，不引用不存在的图片文件。
+这些截图来自本地 Mock Demo，示例输出不代表真实医院科室、医生或号源信息。

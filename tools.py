@@ -317,7 +317,7 @@ def get_doctor_schedule(department: str, day_of_week: str) -> Dict[str, Any]:
                     continue
                 status = str(info.get("status", "")).strip()
                 fee = info.get("fee", None)
-                if not status or status.lower() == "off" or status == "停诊":
+                if not status or status.lower() == "off" or status in {"停诊", "已约满", "无号", "暂无号源"}:
                     continue
                 fee_text = f"（¥{fee}）" if isinstance(fee, (int, float)) and fee else ""
                 # e.g. Monday_AM -> AM
@@ -351,4 +351,3 @@ def humanize_schedule(schedule: Dict[str, Any]) -> str:
         sub_txt = f"｜{sub}" if sub else ""
         lines.append(f"- {x.get('name')}（{x.get('title')}）{sub_txt}：{x.get('time')}")
     return "\n".join(lines)
-

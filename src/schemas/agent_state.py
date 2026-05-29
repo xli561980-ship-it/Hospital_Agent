@@ -50,3 +50,4 @@ class State(TypedDict, total=False):
     registration_steps: list[str]
     registration_location: Optional[dict]
     slot_extract_source: Optional[str]
+    safety_boundary_violation: bool

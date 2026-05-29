@@ -330,6 +330,28 @@ def _classify_intent_regex(text: str) -> Intent:
     return "triage_consult"
 
 
+def _asks_medical_judgment_or_advice(text: str) -> bool:
+    t = text or ""
+    if re.search(r"(药房|取药|拿药|领药|发药|发放|窗口|几号窗口|在哪|哪里|怎么走|位置|几楼)", t) and re.search(
+        r"(药|药品|处方|红处方|毒麻|麻醉|止疼)", t
+    ):
+        return False
+    if re.search(r"(看哪个科|看什么科|挂哪个科|挂什么科|去哪个科|哪个科室|什么科室)", t) and not re.search(
+        r"(吃什么药|用什么药|开什么药|用药建议|药物剂量|怎么治|如何治|治疗方案|治疗建议|是不是|会不会是|可能是|确诊|诊断|严重吗|严不严重)",
+        t,
+    ):
+        return False
+    if re.search(r"((吃|用|服|开|需要).{0,6}(药|药物|抗生素|止痛药|处方)|什么药|用药|药物|剂量|处方)", t):
+        return True
+    if re.search(r"(怎么治|如何治|治疗方案|治疗建议|需要手术|要不要手术|检查什么|做什么检查)", t):
+        return True
+    if re.search(r"(是不是|会不会是|可能是|怀疑|确诊|诊断|我这是|属于).{0,12}(病|脑梗|心梗|卒中|肺炎|癌|肿瘤|骨折|感染|抑郁|糖尿病|高血压|阑尾炎|胃炎|哮喘)", t):
+        return True
+    if re.search(r"(严重吗|严不严重|危险吗|会不会死|病情严重)", t):
+        return True
+    return False
+
+
 def _user_resets_triage(text: str) -> bool:
     return bool(re.search(r"(我还有别的症状|还有别的症状|换一个人看病|换个医生|换医生|重新分诊|重新推荐|换个科室)", text))
 
@@ -1285,6 +1307,12 @@ def _classify_intent_llm(text: str) -> Optional[Intent]:
 
 def classify_intent(state: State) -> State:
     text = _last_user_text(state)
+    if _asks_medical_judgment_or_advice(text):
+        state["intent"] = "other"
+        state["intent_source"] = "safety_boundary"
+        state["safety_boundary_violation"] = True
+        return state
+
     use_llm = env_flag("USE_INTENT_LLM", True)
     intent: Optional[Intent] = None
     if use_llm:
@@ -1304,7 +1332,9 @@ _compliant_replacement = compliant_replacement
 
 def _finalize(state: State, draft: str) -> State:
     reply = _strip_forbidden_tech(draft)
-    if state.get("action") != "LOCATION" and _contains_forbidden_medical(reply):
+    if state.get("safety_boundary_violation"):
+        reply = _compliant_replacement(None)
+    elif state.get("action") != "LOCATION" and _contains_forbidden_medical(reply):
         reply = _compliant_replacement(state.get("department"))
     state.setdefault("messages", [])
     state["messages"].append(AIMessage(content=reply))
